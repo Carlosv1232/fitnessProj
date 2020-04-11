@@ -8,11 +8,13 @@ public class employee extends User {
 	//more values may be added during the development phase
 	
 	
+	
 	public employee(String fn, String ln, int id, Boolean h) {
 		super(fn, ln, id);	//passes the values to the inherited class constructor
 		isHired = h;
 		isManager = false;	//we will initially set the isManager to false until value is changed to true
 	}
+	
 	
 	public void changeHire(Boolean h) {
 		isHired = h;

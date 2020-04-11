@@ -21,5 +21,7 @@ public class customer extends User{
 	
 	//The getters and setters are inherited from the user class!
 	
-	
+	public Boolean getStatus() {
+		return status;
+	}
 }
