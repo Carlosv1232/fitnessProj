@@ -3,10 +3,11 @@ import java.lang.*;
 
 public class employee extends User {
 
-	Boolean isHired;	//this will determine if an employee still has rights to a hired employee
-	Boolean isManager;	//managers will be given access to more functionality
+	boolean isHired;	//this will determine if an employee still has rights to a hired employee
+	boolean isManager;	//managers will be given access to more functionality
 	//more values may be added during the development phase
 	
+	//employee will be able to clock in and out, include total time worked, 
 	
 	
 	public employee(String fn, String ln, int id, Boolean h) {
@@ -22,6 +23,10 @@ public class employee extends User {
 	
 	public void changeManager(Boolean m) {
 		isManager = m;
+	}
+	
+	public boolean returnManager() {
+		return isManager;
 	}
 	
 	public String toString() {
