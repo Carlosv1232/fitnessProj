@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class equiptment {
+public class equiptment {	//I know its spelled wrong!
 	String name;
 	int code;
 	String status;

@@ -1,3 +1,9 @@
+commit e9edd5e50f8d3d3a60b4df567e70de1ce5c6d335
+Author: Carlosv1232 <60190811+Carlosv1232@users.noreply.github.com>
+Date:   Thu Apr 23 16:56:53 2020 -0700
+
+    current progress for the final check in. Not yet complete, program files are done for now
+
 commit 91b88f24a39d52d949a2c046b119e0e5c02ea52b
 Author: Carlosv1232 <60190811+Carlosv1232@users.noreply.github.com>
 Date:   Fri Apr 10 17:20:46 2020 -0700
