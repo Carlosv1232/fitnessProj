@@ -1,0 +1,165 @@
+package test;
+
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.swt.widgets.Shell;
+import org.eclipse.swt.widgets.Label;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.widgets.Text;
+import org.eclipse.swt.widgets.Button;
+import org.eclipse.wb.swt.SWTResourceManager;
+import org.eclipse.swt.events.SelectionAdapter;
+import org.eclipse.swt.events.SelectionEvent;
+import org.eclipse.swt.widgets.Combo;
+import org.eclipse.swt.custom.CBanner;
+import org.eclipse.swt.widgets.ExpandBar;
+import org.eclipse.swt.dnd.DragSource;
+import org.eclipse.swt.dnd.DND;
+import org.eclipse.swt.widgets.Table;
+import org.eclipse.swt.events.MouseAdapter;
+import org.eclipse.swt.events.MouseEvent;
+
+public class GUIProject {
+
+protected Shell shlFitnessCenterPage;
+private Text text;
+private Text text_1;
+private Table table;
+
+
+public static void main(String[] args) {
+try {
+GUIProject window = new GUIProject();
+window.open();
+} catch (Exception e) {
+e.printStackTrace();
+}
+}
+public void open() {
+Display display = Display.getDefault();
+createContents();
+shlFitnessCenterPage.open();
+shlFitnessCenterPage.layout();
+while (!shlFitnessCenterPage.isDisposed()) {
+if (!display.readAndDispatch()) {
+display.sleep();
+}
+}
+}
+
+protected void createContents() {
+shlFitnessCenterPage = new Shell();
+shlFitnessCenterPage.setTouchEnabled(true);
+shlFitnessCenterPage.setSize(564, 457);
+shlFitnessCenterPage.setText("Fitness Center Page\r\n");
+
+Label lblNewLabel = new Label(shlFitnessCenterPage, SWT.NONE);
+lblNewLabel.setBounds(10, 47, 88, 23);
+lblNewLabel.setText("Log-In Account");
+
+text = new Text(shlFitnessCenterPage, SWT.BORDER);
+text.setBounds(104, 44, 76, 26);
+
+Label lblNewLabel_1 = new Label(shlFitnessCenterPage, SWT.NONE);
+lblNewLabel_1.setBounds(10, 105, 77, 15);
+lblNewLabel_1.setText("Password");
+
+text_1 = new Text(shlFitnessCenterPage, SWT.BORDER);
+text_1.setBounds(104, 105, 76, 26);
+
+Button btnNewButton = new Button(shlFitnessCenterPage, SWT.NONE);
+btnNewButton.addMouseListener(new MouseAdapter() {
+@Override
+public void mouseDoubleClick(MouseEvent e) {
+System.out.print("Welcome! here is the infomation" );
+}
+});
+btnNewButton.setBounds(35, 154, 75, 25);
+btnNewButton.setText("Submit");
+
+Button btnNewMemberClick = new Button(shlFitnessCenterPage, SWT.NONE);
+btnNewMemberClick.setForeground(SWTResourceManager.getColor(SWT.COLOR_LIST_SELECTION));
+btnNewMemberClick.setText("New member? click here!");
+btnNewMemberClick.setBounds(393, 383, 145, 25);
+
+Button btnMember = new Button(shlFitnessCenterPage, SWT.RADIO);
+btnMember.setBounds(10, 202, 90, 16);
+btnMember.setText("Member");
+
+Button btnEmployee = new Button(shlFitnessCenterPage, SWT.RADIO);
+btnEmployee.setBounds(106, 202, 90, 16);
+btnEmployee.setText("Employee");
+
+Button btnManager = new Button(shlFitnessCenterPage, SWT.RADIO);
+btnManager.addSelectionListener(new SelectionAdapter() {
+@Override
+public void widgetSelected(SelectionEvent e) {
+}
+});
+btnManager.setBounds(211, 202, 90, 16);
+btnManager.setText("Manager");
+
+Combo combo = new Combo(shlFitnessCenterPage, SWT.READ_ONLY);
+combo.setItems(new String[] {"Oakland", "Hayward", "Castro Vallley", "Fremont ", "Berkeley"});
+combo.setBounds(410, 44, 91, 26);
+combo.setText("Locations Available");
+
+CBanner banner = new CBanner(shlFitnessCenterPage, SWT.NONE);
+banner.setBounds(301, 47, 24, 37);
+
+Button btnNewButton_1 = new Button(shlFitnessCenterPage, SWT.NONE);
+btnNewButton_1.setBounds(443, 84, 58, 15);
+btnNewButton_1.setText("Submit");
+
+/*
+// this is for the table to show the employees their schedule and to submit it.
+public void getTable(){
+
+JFrame frame = new JFrame();
+String [] info = { " First Name", "Last Name", "Occupation", "Time Start", "Time End", "Check-In"};
+
+public String[] mainSet{ "Karen", "McKaren", "Personal Trainer"}, {"John", "Doe", "Manager"}, {"Ema", "Cards", "Desk Staff"};
+
+info.add(info);
+mainSet.add(mainSet);
+
+mainSet.getContnetPane(frame, BorderLayout.CENTER);
+
+MainSet.setSize(200,200);
+mainSet.setVisible(true);
+
+public void getCheck(){
+// for the employees to check in when using the table
+ 
+ JCheckBox enter = new JCheckBox("Check-In");
+ enter.add(enter);
+ 
+ enter.setSize(20,20);
+ enter.setVisible(true);
+
+
+}
+
+*/
+
+
+
+table = new Table(shlFitnessCenterPage, SWT.BORDER | SWT.CHECK | SWT.FULL_SELECTION);
+table.setToolTipText("\r\n\r\n");
+table.setTouchEnabled(true);
+table.setBounds(348, 198, 153, 146);
+table.setHeaderVisible(true);
+table.setLinesVisible(true);
+
+
+
+Combo equipment = new Combo(shlFitnessCenterPage, SWT.READ_ONLY);
+equipment.setItems(new String[] {"Treadmill", "Dumbbell Set", "Barbell Set", "Training Bench", "Kettlebell Set", "Pull-up Frame", "Rowing Machine ", "Fitness Ball"});
+equipment.setFont(SWTResourceManager.getFont("Segoe UI", 9, SWT.BOLD));
+equipment.setBounds(35, 275, 114, 37);
+
+Label lblNewLabel_2 = new Label(shlFitnessCenterPage, SWT.NONE);
+lblNewLabel_2.setBounds(52, 250, 68, 15);
+lblNewLabel_2.setText("Equipment");
+
+}
+}
