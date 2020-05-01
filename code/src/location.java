@@ -255,6 +255,41 @@ public class location {
 		return result;
 	}
 	
+	public void loadInformation() {
+	/* These are just suggestions, you could build it however you think is correct!
+	 * 
+	 * We need this function to load all the information that the location needs
+	 * 
+	 * we can seperate the location information into seperate .txt files such as:
+	 * fremont.txt, hayward.txt, unioncity.txt and each of the txt files will contain the information for this location
+	 * 
+	 * if you want we could have a seperate txt file for saving the employees information such as: fremontEmpl.txt, haywardEmpl.txt
+	 * 
+	 * make sure that the information within the txt file is structured so that the data being read may be stored correctly for example
+	 * each line in the txt file contains the information for each variable in the class like: location name, services, equiptment, etc.
+	 * 
+	 * use the class functions to store the information into the class itself
+	 * 
+	 */
+			
+	}
+	
+	public void saveinformation() {
+		/*	for saving the information into the txt file make sure that the file maintains the same 
+		 * structure so that when we reload the information into the classes, there won't be information getting in somewhere else
+		 * 
+		 * use the get functions to return the information in here to get stored into the txt file
+		 * remember that some of the get functions will work like toString() so you will need to
+		 * use the .split() in order to split up the information
+		 * the functions that work like toString() will be labeled by the function itself
+		 * 
+		 * change up the process if you find it easier, make sure to test the functions!
+		 * if there are any functions that aren't properly working, please let Carlos know, or if you
+		 * know how to fix it, please do so. Thank you
+		 * 
+		 * Good luck!
+		 */
+	}
 	
 	//save location information
 	//load location information
