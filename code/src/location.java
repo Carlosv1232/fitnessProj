@@ -1,5 +1,6 @@
 
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class location {
 
@@ -16,6 +17,9 @@ public class location {
 	equiptment[] equip;	//holds all the equipment that the location has
 	int numOfEquip;	//holds the number of equipment
 	int equipmentLimit = 10;	//set to 10 for testing purposes, real applications will have larger
+	
+	String isBusy;	//this will store whether the location is busy or not, { slow, medium, High }
+					//will be generated every time the class is built
 	
 	String location_manager;	//manager object is going to be part of the loc_emp array
 	
@@ -41,6 +45,15 @@ public class location {
 		}
 		
 		location_manager = loc_man;	//location manager
+		int ranNum = ThreadLocalRandom.current().nextInt(1, 4);	//will generate a number between 1 - 3
+		if(ranNum == 1) {
+			isBusy = "Slow";
+		} else if(ranNum == 2) {
+			isBusy = "Medium";
+		} else if(ranNum == 3) {
+			isBusy = "High";
+		}
+		
 		
 	}
 	
