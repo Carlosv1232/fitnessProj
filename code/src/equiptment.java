@@ -1,3 +1,4 @@
+//package project;
 import java.util.*;
 
 public class equiptment {	//I know its spelled wrong!
@@ -34,8 +35,8 @@ public class equiptment {	//I know its spelled wrong!
 		return status;
 	}
 	public String toString() {
-		
-		return (name + "," + code + "," + status);
+		String result = name + "_" + code + "_" + status;
+		return result;
 	}
 	
 	
