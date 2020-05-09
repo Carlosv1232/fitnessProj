@@ -34,8 +34,6 @@ public class main {
 		OaklandLoc.loadInformation(oakAbsolute);
 		/////////////////////////////////////////////////////////////////////////
 		
-		fremontLoc.addEquipment("Kids-Area", 4, "Under-Development");
-		fremontLoc.addServices("Training");
 		
 		
 		File testFile = new File("saveTest.txt");
