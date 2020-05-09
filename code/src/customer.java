@@ -21,7 +21,7 @@ public class customer extends User{
 	}
 	
 	public String fullToString() {	//this will only be used for storing the users information into the text file
-		String result = super.fullToString() + "_" + date_joined + "_" + status;
+		String result = super.allInfo() + "_" + date_joined + "_" + status;
 		return result;
 	}
 	

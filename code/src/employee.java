@@ -44,9 +44,23 @@ public class employee extends User {
 	
 	
 	public String toString() {
-		return (super.toString() + "_" + position + "_" + isManager + "_" + date_joined);	
+		/*
+		String managerBool = "";
+		if(isManager === true) {
+			managerBool = "true";
+		} else if(isManager === false) {
+			managerBool = false;
+		}
+		*/
+		return (super.toString() + "_" + position + "_" + date_joined + "_" + isManager);
+		//return (super.toString() + "_" + position + "_" + date_joined + "_" + managerBool);
 		//returns: FirstName_LastName_Username_ + boolean isHired
 								
+	}
+	
+	public String fullToString() {
+
+		return (super.allInfo() + "_" + position + "_" + date_joined + "_" + isManager);
 	}
 
 	//since employee extends to User, employee could use checkSignIn(String user, String pass), returns boolean

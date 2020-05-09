@@ -10,7 +10,7 @@ import java.io.*;
 public class main {
 	
 	
-	public static void main(String arg[]) {
+	public static void main(String arg[]) throws IOException {
 		
 		//in the main file we will store which user is signed in into their own variable that will
 		//be passed into other functions
@@ -19,6 +19,9 @@ public class main {
 		File file = new File("fremontLocation.txt");
 		String FremontAbsolute = file.getAbsolutePath();
 		fremontLoc.loadInformation(FremontAbsolute);
+		
+		fremontLoc.addEquipment("Kids-Area", 4, "Under-Development");
+		fremontLoc.addServices("Training");
 		
 		
 		File testFile = new File("saveTest.txt");

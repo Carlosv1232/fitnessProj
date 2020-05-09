@@ -59,9 +59,9 @@ public class User {
 		return result;
 	}
 	
-	public String fullToString() {	//this is going to be used for storing the users data in the text file
+	public String allInfo() {//this is going to be used for storing the users data in the text file
 		//fullToString() will return everything INCLUDING the password
-		//
+	
 		String result = first_name + "_" + last_name + "_" + Username + "_" + password;
 		return result;
 	}

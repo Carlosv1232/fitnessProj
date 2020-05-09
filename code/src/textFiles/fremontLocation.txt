@@ -1,5 +1,0 @@
-Fremont
-Carlos_Vera
-Pool,BasketBall-Court,Sauna
-Stationary-Bike_1_Available,Treadmill_2_Available,Dumbell-Set_3_Under-maintenance
-Carlos_Vera_user123_pass123_Manager_04-02-2020_true,Manuel_Forbes_we9874_pass987_Trainer_05-20-2019_false,Mabel_Kelley_df6543_pass456_Maintainence_01-02-2015_false,Richard_Cake_hg1245_pass159_Front-Desk_04-20-2020_false,Jawad_Burt_ea8566_pass147_Sanitation_02-06-2077_false

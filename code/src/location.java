@@ -1,12 +1,12 @@
 
-import java.util.*;
-import java.util.concurrent.ThreadLocalRandom;
-import java.io.File;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.IOException;
 import java.io.FileWriter;
-import java.io.PrintWriter;
+import java.io.IOException;
+import java.util.concurrent.ThreadLocalRandom;
 
 
 public class location {
@@ -19,7 +19,7 @@ public class location {
 	
 	employee[] loc_emp;	//array to hold the location employees
 	int numOfEmp;	//number of employees at the location
-	int emplLimit = 10;	//each location will be limited by 10 employees including the manager
+	int emplLimit = 15;	//each location will be limited by 10 employees including the manager
 		
 	equiptment[] equip;	//holds all the equipment that the location has
 	int numOfEquip;	//holds the number of equipment
@@ -89,6 +89,10 @@ public class location {
 		return location;
 	}
 	
+	public String getLocationManager() {
+		return location_manager;
+	}
+	
 	public String getServices() {
 		//getServices is going to work like toString(), must be split on other end
 		String result = "";
@@ -115,7 +119,7 @@ public class location {
 		String result = "";
 		
 		 for(int i = 0; i < loc_emp.length; i++) {
-			 if(loc_emp[i].getFName() == Fname) {
+			 if(loc_emp[i].getFName().equals(Fname)) {	//loc_emp[i].getFName() == Fname
 				 result = loc_emp[i].toString();	//is going to return, first name, Last name, ID, and the isHired status
 				 return result;	// 
 			 }
@@ -128,7 +132,7 @@ public class location {
 		 return result;		
 	}
 	
-	public String employeeToString() {	//this is going to return ALL EMPLOYEE TO STRING()
+	public String employeeToString() {	
 		
 		String result = "";
 		for(int i = 0; i < numOfEmp; i++) {
@@ -137,6 +141,14 @@ public class location {
 		return result;
 		//return: FirstName_LastName_ID_isHired_isManager, FirstName_LastName_ID_isHired_isManager
 		//therefore split with "," first to get individual employees, then split "_" to get the individual information
+	}
+	
+	public String employeeFullToString() {	//this will be used to store the data back to the text file
+		String result = "";
+		for(int i = 0; i < numOfEmp; i++) {
+			result = result + loc_emp[i].fullToString() + ",";
+		}
+		return result;
 	}
 	
 	//public void addEmployee(String Fname, String Lname, String username, String pass)
@@ -322,39 +334,23 @@ public class location {
 	
 	public String getLocationinfo() {	//returns: Location name, Location manager, IsBusy, equipment toString(), service toString()
 		String result = "";
-		result = location + "," + location_manager + "," + isBusy + ",";
-		for(int i = 0; i < numOfEquip; i++) {
-			result = result + equip[i].toString() + ",";
-		}
+		result = location + "," + location_manager + ",";
 		for(int i = 0; i < numOfServices; i++) {
 			result = result + Services[i] + ",";
+		}
+		for(int i = 0; i < numOfEquip; i++) {
+			result = result + equip[i].toString() + ",";
 		}
 		return result;
 	}
 	
-	/*
-	String location;	//stores the name of the location
-	
-	String[] Services;	//this will contain everything that each location offers
-	int numOfServices;
-	int servicesLimit = 5;
-	
-	employee[] loc_emp;	//array to hold the location employees
-	int numOfEmp;	//number of employees at the location
-	int emplLimit = 10;	//each location will be limited by 10 employees including the manager
-		
-	equiptment[] equip;	//holds all the equipment that the location has
-	int numOfEquip;	//holds the number of equipment
-	int equipmentLimit = 10;	//set to 10 for testing purposes, real applications will have larger
-	
-	String isBusy;	//this will store whether the location is busy or not, { slow, medium, High }
-					//will be generated every time the class is built
-	
-	String location_manager;	//manager object is going to be part of the loc_emp array
-	*/
 	
 	public void loadInformation(String file) {
-	
+		//	function notes:
+		//this function will load the information line by line, I will do this by using switch case
+		//each case will represent one line in the text file
+		//the text file has been structured so that each line has different data to be read in
+		//I used a counter to track which line will be read next, it will continue reading until null
 		
 		String partition = "\n--------------------------------------------------\n";
 		System.out.println(file);
@@ -450,23 +446,96 @@ public class location {
 		
 	}
 	
-	public void saveinformation(String file) {
+	public void saveinformation(String file) throws IOException {
 		
+		String partition = "----------------------------------";
 		System.out.println(file);
-		try {
-			Formatter x = new Formatter(file);
-			System.out.println(getLocation());
-			x.format("%s", getLocation());
-			x.format("%s", "thing");
+		try (BufferedWriter bw = new BufferedWriter(new FileWriter(file))){
+			bw.flush();
+			
+			String info = getLocationinfo();
+			String[] unSplit = info.split(",");
+			
+			int counter = 0;	//this will be used to keep track of the information in the unSplit array
+			
+			System.out.println(partition);
+			System.out.println("Storing the location Name");
+			bw.write(unSplit[0]);	//stores the location name
+			bw.newLine();
+			counter++;
+			System.out.println("Counter: " + counter);
 			
 			
-		} catch(Exception e) {
-			System.out.println("ERROR OCCURED");
-			e.printStackTrace();
+			System.out.println(partition);
+			System.out.println("Storing the location manager");
+			bw.write(unSplit[1]);	//stores the Location Manager
+			bw.newLine();
+			counter++;
+			System.out.println("Counter: " + counter);
+			
+			String storeServ = "";
+			int counterClone = counter;	//counterClone is created to not mess up the for loop and incrementing counter
+			for(int i = counterClone; i < (numOfServices + counterClone); i++) {
+				storeServ = storeServ + unSplit[i] + ",";
+				//System.out.println(unSplit[i]);
+				counter++;
+			}
+			
+			System.out.println(partition);
+			System.out.println("Storing the Services");
+			bw.write(storeServ);//stores the locations services
+			bw.newLine();
+			System.out.println("Number of Services: " + numOfServices);
+			System.out.println("Counter: " + counter);
+			
+			String storeEqui = "";
+			counterClone = counter;
+			for(int i = counterClone; i < (numOfEquip + counterClone); i++) {
+				storeEqui = storeEqui + unSplit[i] + ",";
+				counter++;
+			}
+			
+			System.out.println(partition);
+			System.out.println("Storing in Equipment");
+			bw.write(storeEqui);
+			bw.newLine();
+			System.out.println("Number of Equipment: " + numOfEquip);
+			System.out.println("Counter: " + counter);
+			
+			System.out.println(partition);
+			System.out.println("Storing the Employee information");
+			System.out.println("Number of Employees: " + numOfEmp);
+			bw.write(employeeFullToString());
+			
+			bw.close();
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
 		}
-	
+		
+		System.out.println("Done Saving!");
 	
 	
 	}
+	/*
+	String location;	//stores the name of the location
+	
+	String[] Services;	//this will contain everything that each location offers
+	int numOfServices;
+	int servicesLimit = 5;
+	
+	employee[] loc_emp;	//array to hold the location employees
+	int numOfEmp;	//number of employees at the location
+	int emplLimit = 10;	//each location will be limited by 10 employees including the manager
+		
+	equiptment[] equip;	//holds all the equipment that the location has
+	int numOfEquip;	//holds the number of equipment
+	int equipmentLimit = 10;	//set to 10 for testing purposes, real applications will have larger
+	
+	String isBusy;	//this will store whether the location is busy or not, { slow, medium, High }
+					//will be generated every time the class is built
+	
+	String location_manager;	//manager object is going to be part of the loc_emp array
+	*/
+	
 	
 }
