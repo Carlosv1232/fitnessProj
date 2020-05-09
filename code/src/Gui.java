@@ -1,40 +1,45 @@
 //package project;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.JButton;
+import javax.swing.JPasswordField;
 import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.ActiveEvent;
+import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import javax.swing.JPasswordField;
 import java.awt.Font;
 import java.awt.Color;
 import java.awt.SystemColor;
+import java.awt.event.MouseEvent;
 
-public class Gui{
+public class Gui {
 
-	private JFrame frame;
+	private JFrame frmFitnessCenterPage;
 	private JTextField textField;
-	private JTextField textField_2;
-	private JPasswordField pass;
-	private JPasswordField pass2;
-	private location Fremont;	//These are the locations that the data is going to be taken from
+	private JPasswordField passwordField;
+	private JLabel lblNewLabel_2;
+	private JButton btnNewButton_1;
+	private location Fremont;
 	private location SanFran;
 	private location Oakland;
+	private JTextField textField_1;
+	private JPasswordField passwordField_1;
 
 	/**
 	 * Launch the application.
 	 */
+	/*
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					Gui window = new Gui();
-					window.frame.setVisible(true);
+					window.frmFitnessCenterPage.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -42,160 +47,157 @@ public class Gui{
 		});
 	}
 
+	*/
+
 	/**
 	 * Create the application.
 	 */
 	public Gui() {
-		//initialize the location information here
-		
-		
-		
-		
 		initialize();
-		
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	private void initialize() {	//this is the startup menu that will be presented
-		frame = new JFrame();
-		frame.setBounds(100, 100, 466, 326);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.getContentPane().setLayout(null);
+	private void initialize() {
+		frmFitnessCenterPage = new JFrame();
+		frmFitnessCenterPage.setTitle("Fitness Center Page");
+		frmFitnessCenterPage.setBounds(100, 100, 574, 410);
+		frmFitnessCenterPage.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmFitnessCenterPage.getContentPane().setLayout(null);
 		
-		frame.setTitle("Fitness Center Page");
-		JLabel lblNewLabel = new JLabel("Username\r\n");	//this code is for the user login
-		lblNewLabel.setBounds(26, 62, 60, 32);
-		frame.getContentPane().add(lblNewLabel);
-		
-		JLabel lblNewLabel_1 = new JLabel("Password");
-		lblNewLabel_1.setBounds(26, 128, 60, 32);
-		frame.getContentPane().add(lblNewLabel_1);
+		JLabel lblNewLabel = new JLabel("Username");
+		lblNewLabel.setBounds(72, 62, 72, 23);
+		frmFitnessCenterPage.getContentPane().add(lblNewLabel);
 		
 		textField = new JTextField();
-		textField.setBounds(96, 68, 86, 20);
-		frame.getContentPane().add(textField);
+		textField.setBounds(135, 65, 86, 20);
+		frmFitnessCenterPage.getContentPane().add(textField);
 		textField.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Submit\r\n");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				String usr = textField.getText();
-				String pssw = pass.getText();
-				//have else if's here i guess or have a text file that would get it 
-				if(usr.equals("we12") && pssw.equals("hello1")) {
-					JOptionPane.showMessageDialog(frame, "Log-In/Password succeed!, Welcome back User!");
-					mainMenu second = new mainMenu();
-					second.setVisible(true);
-				}
-				else if(usr.equals("jr09") && pssw.equals("9tyyh")) {
-					JOptionPane.showMessageDialog(frame, "Log-In/Password succeed!, Welcome back User!");
-					
-				}
-				else if(usr.equals("02wq") && pssw.equals("1eisd")) {
-					JOptionPane.showMessageDialog(frame, "Log-In/Password succeed!, Welcome back User!");
-				}
-				else if(usr.equals("ow6t") && pssw.equals("0dqdj")) {
-					JOptionPane.showMessageDialog(frame, "Log-In/Password succeed!, Welcome back User!");
-				}
-				else if(usr.equals("star") && pssw.equals("sbfb5")) {
-					JOptionPane.showMessageDialog(frame, "Log-In/Password succeed!, Welcome back User!");
-				}
-				else {
-					JOptionPane.showMessageDialog(frame, "Incorrect Log-In/Password, please re type it. ");
-				}
-				
-			}
-		});
+		JLabel lblNewLabel_1 = new JLabel("Password");
+		lblNewLabel_1.setBounds(72, 105, 72, 17);
+		frmFitnessCenterPage.getContentPane().add(lblNewLabel_1);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(135, 103, 154, 20);
+		frmFitnessCenterPage.getContentPane().add(passwordField);
+		
+		JButton btnNewButton = new JButton("Enter");
 		btnNewButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				System.out.print("Log-in and Password are correct, welcome back user!");
+				System.out.print("Log-In and password are correct, welcome back User!");
 			}
 		});
-		btnNewButton.setBounds(77, 180, 89, 23);
-		frame.getContentPane().add(btnNewButton);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String u = textField.getText();
+				String p = passwordField.getText();
+				
+				if(u.equals("we12") && p.equals("hello1")) {
+				
+						JOptionPane.showMessageDialog(frmFitnessCenterPage, "Log-In succeed, welcome back User!");
+						mainMenu second = new mainMenu();
+						second.setVisible(true);
+					
+					}
+				else if(u.equals("jr09") && p.equals("9tyyh")) {
+					JOptionPane.showMessageDialog(frmFitnessCenterPage, "Log-In succeed, welcome back User!");
+					mainMenu second = new mainMenu();
+					second.setVisible(true);
+				}
+				else if(u.equals("02wq") && p.equals("1eisd")) {
+					JOptionPane.showMessageDialog(frmFitnessCenterPage, "Log-In succeed, welcome back User!");
+					mainMenu second = new mainMenu();
+					second.setVisible(true);
+				}
+				else if(u.equals("ow6t") && p.equals("0dqdj")) {
+					JOptionPane.showMessageDialog(frmFitnessCenterPage, "Log-In/Password succeed!, Welcome back User!");
+					mainMenu second = new mainMenu();
+					second.setVisible(true);
+				}
+				else if(u.equals("star") && p.equals("sbfb5")) {
+					JOptionPane.showMessageDialog(frmFitnessCenterPage, "Log-In/Password succeed!, Welcome back User!");
+					mainMenu second = new mainMenu();
+					second.setVisible(true);
+				}
+			
+			    else {
+			    	JOptionPane.showMessageDialog(frmFitnessCenterPage, "Incorrect info, please re-enter!");
+			    }
+			}
+		});
 		
-		JLabel lblNewLabel_2 = new JLabel("Member Log-In");	//this code is for the employee log-in
-		lblNewLabel_2.setBounds(303, 22, 86, 29);
-		frame.getContentPane().add(lblNewLabel_2);
+		btnNewButton.setBounds(132, 145, 89, 23);
+		frmFitnessCenterPage.getContentPane().add(btnNewButton);
 		
-		JLabel lblNewLabel_3 = new JLabel("Username\r\n");
-		lblNewLabel_3.setBounds(264, 67, 70, 23);
-		frame.getContentPane().add(lblNewLabel_3);
+		lblNewLabel_2 = new JLabel("Member Log-In");
+		lblNewLabel_2.setBounds(72, 11, 112, 20);
+		frmFitnessCenterPage.getContentPane().add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_4 = new JLabel("Employee Log-In");
-		lblNewLabel_4.setBounds(48, 25, 99, 22);
-		frame.getContentPane().add(lblNewLabel_4);
-		
-		JLabel lblNewLabel_5 = new JLabel("Password");
-		lblNewLabel_5.setBounds(264, 137, 70, 14);
-		frame.getContentPane().add(lblNewLabel_5);
-		
-		textField_2 = new JTextField();
-		textField_2.setBounds(326, 68, 86, 20);
-		frame.getContentPane().add(textField_2);
-		textField_2.setColumns(10);
-		
-		JButton btnNewButton_1 = new JButton("Submit");
+		btnNewButton_1 = new JButton("New Member? Sign-up here!");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String usr2 = textField_2.getText();
-				String pssw2 = pass2.getText();
-				//have else if's here i guess or have a text file that would get it 
-				if(usr2.equals("qwf2") && pssw2.equals("fvfg45")) {
-					JOptionPane.showMessageDialog(frame, "Log-In/Password succeed!, Welcome back User!");
+				NewMember mem = new NewMember();
+				mem.setVisible(true);
+			}
+		});
+		btnNewButton_1.setBounds(316, 309, 195, 23);
+		frmFitnessCenterPage.getContentPane().add(btnNewButton_1);
+		
+		JLabel lblNewLabel_3 = new JLabel("Username");
+		lblNewLabel_3.setBounds(316, 66, 66, 14);
+		frmFitnessCenterPage.getContentPane().add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_4 = new JLabel("Password");
+		lblNewLabel_4.setBounds(316, 106, 46, 14);
+		frmFitnessCenterPage.getContentPane().add(lblNewLabel_4);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(376, 63, 100, 20);
+		frmFitnessCenterPage.getContentPane().add(textField_1);
+		textField_1.setColumns(10);
+		
+		passwordField_1 = new JPasswordField();
+		passwordField_1.setBounds(372, 103, 139, 20);
+		frmFitnessCenterPage.getContentPane().add(passwordField_1);
+		
+		JButton btnNewButton_2 = new JButton("Enter");
+		btnNewButton_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String u = textField_1.getText();
+				String p = passwordField_1.getText();
+				
+				if(u.equals("qwf2") && p.equals("fvfg45")) {
+					JOptionPane.showMessageDialog(frmFitnessCenterPage, "Log-In/Password succeed!, Welcome back User!");
 					OtherMainMenu other = new OtherMainMenu();
 					other.setVisible(true);
 				}
-				else if(usr2.equals("jkkq5") && pssw2.equals("nfkf34")) {
-					JOptionPane.showMessageDialog(frame, "Log-In/Password succeed!, Welcome back User!");
-					
+				else if(u.equals("jkkq5") && p.equals("nfkf34")) {
+					JOptionPane.showMessageDialog(frmFitnessCenterPage, "Log-In/Password succeed!, Welcome back User!");
+
 				}
-				else if(usr2.equals("1wfwf") && pssw2.equals("hwwmd78")) {
-					JOptionPane.showMessageDialog(frame, "Log-In/Password succeed!, Welcome back User!");
+				else if(u.equals("1wfwf") && p.equals("hwwmd78")) {
+					JOptionPane.showMessageDialog(frmFitnessCenterPage, "Log-In/Password succeed!, Welcome back User!");
 				}
-				else if(usr2.equals("18qead") && pssw2.equals("kmq149")) {
-					JOptionPane.showMessageDialog(frame, "Log-In/Password succeed!, Welcome back User!");
+				else if(u.equals("18qead") && p.equals("kmq149")) {
+					JOptionPane.showMessageDialog(frmFitnessCenterPage, "Log-In/Password succeed!, Welcome back User!");
 				}
-				else if(usr2.equals("star") && pssw2.equals("sbfb5")) {
-					JOptionPane.showMessageDialog(frame, "Log-In/Password succeed!, Welcome back User!");
+				else if(u.equals("star") && p.equals("sbfb5")) {
+					JOptionPane.showMessageDialog(frmFitnessCenterPage, "Log-In/Password succeed!, Welcome back User!");
 				}
 				else {
-					JOptionPane.showMessageDialog(frame, "Incorrect Log-In/Password, please re type it. ");
+					JOptionPane.showMessageDialog(frmFitnessCenterPage, "Incorrect Log-In/Password, please re type it. ");
 				}
-				
-			}
-			
-		});
-		btnNewButton_1.setBounds(303, 180, 86, 23);
-		frame.getContentPane().add(btnNewButton_1);
-		
-		pass = new JPasswordField();
-	
-		pass.setBounds(96, 134, 86, 20);
-		frame.getContentPane().add(pass);
-		
-		pass2 = new JPasswordField();
-		pass2.setBounds(328, 134, 84, 20);
-		frame.getContentPane().add(pass2);
-		
-		JButton newmMem = new JButton("New member? Click Here!");
-		newmMem.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-						NewMember nwMem = new NewMember();
-						nwMem.setVisible(true);
-			}
-		});
-		newmMem.setForeground(SystemColor.textHighlight);
-		newmMem.setFont(new Font("Tahoma", Font.PLAIN, 8));
-		newmMem.setBounds(232, 227, 125, 23);
-		frame.getContentPane().add(newmMem);
-	}
 
-	public void setVisible(boolean b) {
+			}
+		});
+		btnNewButton_2.setBounds(351, 145, 89, 23);
+		frmFitnessCenterPage.getContentPane().add(btnNewButton_2);
 		
-		
+		JLabel lblNewLabel_5 = new JLabel("Employee Log-In");
+		lblNewLabel_5.setBounds(336, 14, 89, 14);
+		frmFitnessCenterPage.getContentPane().add(lblNewLabel_5);
 	}
 }

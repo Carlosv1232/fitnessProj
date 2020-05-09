@@ -1,5 +1,4 @@
 //package project;
-
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -9,14 +8,19 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import javax.swing.JPasswordField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.SystemColor;
 
 public class LogOut extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
+	private JTextField textField;		//textfield
+	private JTextField txt;				//textField_1
+	private JPasswordField psws;		//textField_2
+	private JPasswordField psww;		//textField_3
+
 
 	/**
 	 * Launch the application.
@@ -51,43 +55,65 @@ public class LogOut extends JFrame {
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JLabel lblNewLabel = new JLabel("Username");
-		lblNewLabel.setBounds(20, 57, 65, 17);
+		JLabel usr = new JLabel("Username");
+		usr.setBounds(20, 57, 65, 17);
+		contentPane.add(usr);
+		
+		txt = new JTextField(); //textFeild_1
+		txt.setBounds(329, 54, 86, 20);
+		contentPane.add(txt);
+		txt.setColumns(10);
+		
+		JLabel usrr = new JLabel("Username");
+		usrr.setBounds(259, 57, 60, 20);
+		contentPane.add(usrr);
+		
+		JLabel psw = new JLabel("Password");
+		psw.setBounds(20, 124, 65, 17);
+		contentPane.add(psw);
+		
+		JLabel pswr = new JLabel("Password");
+		pswr.setBounds(259, 124, 60, 17);
+		contentPane.add(pswr);
+		
+		JButton smt = new JButton("Submit");
+		smt.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mainMenu mw = new mainMenu();
+				mw.setVisible(true);
+			}
+			
+		});
+		smt.setBounds(95, 191, 89, 23);
+		contentPane.add(smt);
+		
+		JButton smtt = new JButton("Submit");
+		smtt.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		smtt.setBounds(326, 191, 89, 23);
+		contentPane.add(smtt);
+		
+		psws = new JPasswordField();
+		psws.setBounds(107, 122, 86, 20);
+		contentPane.add(psws);
+		
+		psww = new JPasswordField();
+		psww.setBounds(329, 122, 86, 20);
+		contentPane.add(psww);
+		
+		JLabel lblNewLabel = new JLabel("Employee Section");
+		lblNewLabel.setBounds(40, 28, 94, 15);
 		contentPane.add(lblNewLabel);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(329, 54, 86, 20);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
-		
-		JLabel lblNewLabel_1 = new JLabel("Username");
-		lblNewLabel_1.setBounds(259, 57, 60, 20);
+		JLabel lblNewLabel_1 = new JLabel("Member Section");
+		lblNewLabel_1.setBounds(315, 28, 89, 15);
 		contentPane.add(lblNewLabel_1);
 		
-		textField_2 = new JTextField();
-		textField_2.setBounds(107, 121, 86, 20);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
-		
-		JLabel lblNewLabel_2 = new JLabel("Password");
-		lblNewLabel_2.setBounds(20, 124, 65, 17);
-		contentPane.add(lblNewLabel_2);
-		
-		textField_3 = new JTextField();
-		textField_3.setBounds(329, 121, 86, 20);
-		contentPane.add(textField_3);
-		textField_3.setColumns(10);
-		
-		JLabel lblNewLabel_3 = new JLabel("Password");
-		lblNewLabel_3.setBounds(259, 124, 60, 17);
-		contentPane.add(lblNewLabel_3);
-		
-		JButton btnNewButton = new JButton("Submit");
-		btnNewButton.setBounds(95, 191, 89, 23);
-		contentPane.add(btnNewButton);
-		
-		JButton btnNewButton_1 = new JButton("Submit");
-		btnNewButton_1.setBounds(315, 191, 89, 23);
-		contentPane.add(btnNewButton_1);
+		JButton nwmem = new JButton("New Member? Sign up here!");
+		nwmem.setForeground(SystemColor.activeCaption);
+		nwmem.setBounds(272, 255, 167, 23);
+		contentPane.add(nwmem);
 	}
 }

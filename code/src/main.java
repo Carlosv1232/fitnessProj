@@ -1,13 +1,38 @@
 
 
-public class main{
+import java.util.*;
+import java.io.File;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.*;
+
+public class main {
+	
 	
 	public static void main(String arg[]) {
 		
 		//in the main file we will store which user is signed in into their own variable that will
 		//be passed into other functions
 		//customer current_user = new customer();	we will get this information after sign-in
+		location fremontLoc = new location();
+		File file = new File("fremontLocation.txt");
+		String FremontAbsolute = file.getAbsolutePath();
+		fremontLoc.loadInformation(FremontAbsolute);
 		
+		
+		File testFile = new File("saveTest.txt");
+		String testAbso = testFile.getAbsolutePath();
+		
+		fremontLoc.saveinformation(testAbso);
+		
+		
+		
+		}
+}
+		
+		
+		/*
 		String fn = "Carlos";
 		String ln = "Vera";
 		String username = "Zlos";
@@ -94,7 +119,9 @@ public class main{
 		System.out.println(Fremont.getNumOfEquip());
 		System.out.println(Fremont.getEquiptment());
 		System.out.println(Fremont.getLocationinfo());
+	*/
 	
-	}
+
+
+
 	
-}

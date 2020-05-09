@@ -14,6 +14,9 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JTextPane;
 
 public class memNext extends JFrame {
 
@@ -41,25 +44,21 @@ public class memNext extends JFrame {
 	public memNext() {
 		setTitle("Member Page");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 605, 417);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel topic = new JLabel("Member Page\r\n");
-		topic.setBounds(0, 0, 92, 14);
-		contentPane.add(topic);
-		
 		JTextArea txtrPleaseSelectThe = new JTextArea();
 		txtrPleaseSelectThe.setFont(new Font("MS Reference Sans Serif", Font.PLAIN, 8));
 		txtrPleaseSelectThe.setText("Please select the equipment that you wish to use\r\nThen it will be reserved until you arrive. ");
-		txtrPleaseSelectThe.setBounds(203, 51, 205, 75);
+		txtrPleaseSelectThe.setBounds(236, 33, 287, 44);
 		contentPane.add(txtrPleaseSelectThe);
 		
 		JComboBox equipment = new JComboBox();
 		equipment.setModel(new DefaultComboBoxModel(new String[] {"1. Stationary Bicycle,", "2. treadmill,", "3. Dumbbell Set,", "4. Barbell Set,", "5. Training Set,", "6. Kettlebell Set,", "7. Pull-Up Frame & Bar,", "8. Rowing Machine,", "9. Fitness Ball. "}));
-		equipment.setBounds(10, 58, 138, 68);
+		equipment.setBounds(10, 84, 183, 148);
 		contentPane.add(equipment);
 		
 		JButton confirm = new JButton("Submit\r\n");
@@ -70,20 +69,31 @@ public class memNext extends JFrame {
 				
 			}
 		});
-		confirm.setBounds(37, 152, 89, 29);
+		confirm.setBounds(476, 271, 89, 29);
 		contentPane.add(confirm);
 		
 		JLabel user = new JLabel("Welcome Back User");
-		user.setBounds(285, 0, 106, 14);
+		user.setBounds(410, 0, 175, 22);
 		contentPane.add(user);
 		
 		JButton exit = new JButton("Log-out? ");
-		exit.setBounds(319, 213, 89, 23);
+		exit.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				LogOut lg = new LogOut();
+				lg.setVisible(true);
+			}
+		});
+		exit.setBounds(476, 314, 89, 23);
 		contentPane.add(exit);
 		
 		JLabel equiSection = new JLabel("Equipment Section");
 		equiSection.setFont(new Font("Times New Roman", Font.PLAIN, 13));
-		equiSection.setBounds(10, 25, 116, 29);
+		equiSection.setBounds(21, 25, 116, 29);
 		contentPane.add(equiSection);
+		
+		JTextPane txtpnTheGeneratorPart = new JTextPane();
+		txtpnTheGeneratorPart.setText("The generator part for the equipment that is in use or in mantinence here. ");
+		txtpnTheGeneratorPart.setBounds(257, 120, 142, 122);
+		contentPane.add(txtpnTheGeneratorPart);
 	}
 }

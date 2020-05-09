@@ -1,6 +1,13 @@
 
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
+import java.io.File;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.FileWriter;
+import java.io.PrintWriter;
+
 
 public class location {
 
@@ -27,6 +34,11 @@ public class location {
 	public location() {
 		location = "";
 		//Services must be added by the fileReader, or manually by 'manager'
+		numOfServices = 0;
+		numOfEmp = 0;
+		numOfEquip = 0;
+		equip = new equiptment[equipmentLimit];
+		loc_emp = new employee[emplLimit];
 	}
 	
 	public location(String loc, String serv[], employee emp[], equiptment eq[],String loc_man) {
@@ -127,7 +139,8 @@ public class location {
 		//therefore split with "," first to get individual employees, then split "_" to get the individual information
 	}
 	
-	public void addEmployee(String Fname, String Lname, String username, String pass) {	//this function will only be accessible with a manager
+	//public void addEmployee(String Fname, String Lname, String username, String pass)
+	public void addEmployee(employee data) {	//this function will only be accessible with a manager
 		//when the function is called, we will pass in the users information to validate that they're a manager
 		/*
 		if(user.returnManager() == false) {	//if the user is not an manager, then they will be returned to the menu
@@ -141,10 +154,8 @@ public class location {
 			return;
 		}
 		
-		employee newEmp = new employee(Fname, Lname, username, pass, true);	//isManager is set to false by default
 		
-		
-		loc_emp[numOfEmp] = newEmp;	//employee is set to the end of the list
+		loc_emp[numOfEmp] = data;	//employee is set to the end of the list
 		numOfEmp++;	//increment number of employees at the location
 		
 		return;
@@ -249,13 +260,15 @@ public class location {
 	
 	public void addEquipment(String name, int code, String status) {	//the user will have to enter in the equiptment information
 	//we will check if user is manager within the GUI
-		if(equipmentLimit == 10) {
+		if(numOfEquip == equipmentLimit) {
 			System.out.println("The limit for equipment has been reached");
 			return;
 		}
-		
-		equiptment newEquipt = new equiptment(name, code, status);
-		equip[numOfEquip] = newEquipt;
+		System.out.println("Number of Equip: " + numOfEquip);
+		equiptment newEquip = new equiptment(name, code, status);
+		System.out.println(newEquip.toString());
+		equip[numOfEquip] = newEquip;
+		numOfEquip++;
 		System.out.println(name + " was added to the equipment");
 		return;
 	}
@@ -340,53 +353,120 @@ public class location {
 	String location_manager;	//manager object is going to be part of the loc_emp array
 	*/
 	
-	public void loadInformation() {
-	/* These are just suggestions, you could build it however you think is correct!
-	 * 
-	 * We need this function to load all the information that the location needs
-	 * 
-	 * we can seperate the location information into seperate .txt files such as:
-	 * fremont.txt, hayward.txt, unioncity.txt and each of the txt files will contain the information for this location
-	 * 
-	 * if you want we could have a seperate txt file for saving the employees information such as: fremontEmpl.txt, haywardEmpl.txt
-	 * 
-	 * make sure that the information within the txt file is structured so that the data being read may be stored correctly for example
-	 * each line in the txt file contains the information for each variable in the class like: location name, services, equiptment, etc.
-	 * 
-	 * use the class functions to store the information into the class itself
-	 * 
-	 * 
-	 * 
-	 */
+	public void loadInformation(String file) {
+	
+		
+		String partition = "\n--------------------------------------------------\n";
+		System.out.println(file);
+		
+		try (BufferedReader br = new BufferedReader(new FileReader(file))){
+			String line;	//this will read the line of data in the text file
+			int count = 0;	//this is to keep track of where we are at in the file
+			//1st line: Location name.
+			//2nd line: Location manager
+			//3rd: Services
+			//4th: Equiptment
+			//5th: Maybe Employees
+			//br.readLine();
+			while((line = br.readLine()) != null) {
+				switch(count) {
+					case 0:	//loading in the location name
+						System.out.println(partition);
+						System.out.println("Case :" + count + ", loading the location name");
+						location = line;	//no split, sets location name into class
+						System.out.println(location);
+						count++;
+						break;
+					case 1:	//loading in the Locatino manager
+						System.out.println(partition);
+						System.out.println("Case :" + count + ", Loading in the location manager");
+						location_manager = line;
+						System.out.println(location_manager);
+						count++;
+						break;
+					case 2:	//loading in the Services 
+						System.out.println(partition);
+						System.out.println("Case :" + count + ", Loading in the Services");
+						System.out.println(line);
+						String unSplit = line;
+						//String[] data = unSplit.split(",");
+						
+						Services = unSplit.split(",");
+						
+						for(int i = 0; i < Services.length; i++) {
+							System.out.println(Services[i]);
+						}
+						//System.out.println(Services.length);
+						numOfServices = Services.length;	//sets the classes number of services
+						System.out.println("Total Number of Services added: " + numOfServices);
+						count++;
+						break;
+					case 3:	//loading in the equipment
+						System.out.println(partition);
+						System.out.println("Case: " + count + ", Loading in the Equipment");
+						System.out.println(line);
+						unSplit = line;	//reusing variable
+						String[] unSplitEqui = unSplit.split(",");
+						for(int i = 0; i < unSplitEqui.length; i++) {
+							String[] split = unSplitEqui[i].split("_");
+							//equiptment only has three properties, so 3 elements
+							int code = Integer.parseInt(split[1]);
+							//System.out.println(Integer.parseInt(split[1]));
+							//System.out.println(code);
+							addEquipment(split[0], code, split[2]);	//split[1] is String, we convert to int for code
+						}
+						System.out.println(getEquiptment());
+						System.out.println("Total Number of Equipment added: " + numOfEquip);
+						count++;
+						break;
+					case 4:	//loading in the employees
+						System.out.println(partition);
+						System.out.println("Case: " + count + ", Loading in the Location Employees");
+						
+						unSplit = line;
+						String[] unSplitEmp = unSplit.split(",");
+						for(int i = 0; i < unSplitEmp.length; i++) {
+							String[] split = unSplitEmp[i].split("_");
+							employee temp = new employee(split[0], split[1], split[2], split[3], split[4], split[5], Boolean.parseBoolean(split[6]));
+							System.out.println(split[0] + " " + split[1] + " " + split[2] + " " + split[3] + " " + split[4] + " " + split[5] + " " + Boolean.parseBoolean(split[6]));
+							addEmployee(temp);
+						}
+						//System.out.println(employeeToString());
+						System.out.println("Total Number of Employees added: " + numOfEmp);
+						count++;
+						break;
+					case 5:
+						br.close();	//reliquishes resources
+						break;
+					default:
+						System.out.println("DEFAULT CASE");
+						
+				}
+				
+			}
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void saveinformation(String file) {
+		
+		System.out.println(file);
+		try {
+			Formatter x = new Formatter(file);
+			System.out.println(getLocation());
+			x.format("%s", getLocation());
+			x.format("%s", "thing");
 			
+			
+		} catch(Exception e) {
+			System.out.println("ERROR OCCURED");
+			e.printStackTrace();
+		}
+	
+	
+	
 	}
-	
-	public void saveinformation() {
-		/*	for saving the information into the txt file make sure that the file maintains the same 
-		 * structure so that when we reload the information into the classes, there won't be information getting in somewhere else
-		 * 
-		 * use the get functions to return the information in here to get stored into the txt file
-		 * remember that some of the get functions will work like toString() so you will need to
-		 * use the .split() in order to split up the information
-		 * the functions that work like toString() will be labeled by the function itself
-		 * 
-		 * change up the process if you find it easier, make sure to test the functions!
-		 * if there are any functions that aren't properly working, please let Carlos know, or if you
-		 * know how to fix it, please do so. Thank you
-		 * 
-		 * toString functions to use to get the data:
-		 * 
-		 * employeeToString() return val: return: FirstName_LastName_ID_isHired_isManager, FirstName_LastName_ID_isHired_isManager
-		 * to split: split using "," to get each persons toString(), then split with "_" to seperate the names, id, isHired, and isManager
-		 * note: isHired, and isManager are boolean variables so you might have trouble storing it on the text file, if thats the case, 
-		 * change the variable to 
-		 * 
-		 */
-	}
-	
-	//save location information
-	//load location information
-	//save employee information for location
-	
 	
 }

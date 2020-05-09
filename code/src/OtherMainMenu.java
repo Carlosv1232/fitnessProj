@@ -1,5 +1,4 @@
 //package project;
-
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -51,9 +50,10 @@ public class OtherMainMenu extends JFrame {
 	 */
 	@SuppressWarnings("unchecked")
 	public OtherMainMenu() {
+		setTitle("Member Page");
 		setForeground(Color.ORANGE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 576, 378);
 		contentPane = new JPanel();
 		contentPane.setForeground(Color.CYAN);
 		//frame.setTitle("Member Page");
@@ -61,18 +61,14 @@ public class OtherMainMenu extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel memberPage = new JLabel("Member Page");
-		memberPage.setBounds(5, 5, 424, 14);
-		contentPane.add(memberPage);
-		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"San Francisco \t\t\t\t\t\t\t\t\t\t\t\t20.0 MI", "Oakland\t\t\t\t\t\t\t\t\t\t\t\t\t11.0 MI", "Hayward\t\t\t\t\t\t\t\t\t\t\t\t\t8.7 MI", "Fremont\t\t\t\t\t\t\t\t\t\t\t\t\t22.9 MI", "Berkeley\t\t\t\t\t\t\t\t\t\t\t\t\t12.6 MI"}));
-		comboBox.setBounds(5, 82, 182, 52);
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"San Francisco \t\t\t\t\t\t\t\t\t\t\t\t\t\t20.0 MI", "Oakland\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t11.0 MI", "Fremont\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t22.9 MI"}));
+		comboBox.setBounds(5, 41, 183, 93);
 		contentPane.add(comboBox);
 		
 		JLabel Location = new JLabel("Location Section");
-		Location.setFont(new Font("Tahoma", Font.PLAIN, 14));
-		Location.setBounds(5, 30, 125, 30);
+		Location.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		Location.setBounds(5, 0, 125, 30);
 		contentPane.add(Location);
 		
 		JButton btnNewButton_1 = new JButton("Submit");
@@ -88,27 +84,27 @@ public class OtherMainMenu extends JFrame {
 				System.out.print("Selected a Location");
 			}
 		});
-		btnNewButton_1.setBounds(55, 145, 89, 30);
+		btnNewButton_1.setBounds(419, 230, 81, 23);
 		contentPane.add(btnNewButton_1);
 		
 		JLabel User = new JLabel("Welcome Back User");
-		User.setBounds(271, 5, 125, 14);
+		User.setBounds(333, 0, 125, 14);
 		contentPane.add(User);
 		
 		JButton nextPage = new JButton("Log-out?");
 		nextPage.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Gui nxt = new Gui();
+				LogOut nxt = new LogOut();
 				nxt.setVisible(true);
 			}
 		});
-		nextPage.setBounds(315, 215, 81, 23);
+		nextPage.setBounds(419, 291, 81, 23);
 		contentPane.add(nextPage);
 		
 		JTextArea info = new JTextArea();
 		info.setFont(new Font("Myanmar Text", Font.PLAIN, 8));
 		info.setText("Welcome to the Member Page to the Fitness Center. \r\nSelect the following: \r\n-  location to the gym closest to you\r\n-  equipment you wish to use\r\nThen they will be reserved until you arrive at the gym. ");
-		info.setBounds(197, 56, 232, 125);
+		info.setBounds(268, 30, 232, 135);
 		contentPane.add(info);
 	}
 }
