@@ -15,10 +15,24 @@ public class main {
 		//in the main file we will store which user is signed in into their own variable that will
 		//be passed into other functions
 		//customer current_user = new customer();	we will get this information after sign-in
+		
+		/////////////////////////////////////////////////////////////////////////
+		//this will be loading in all the information for all of the locations//
 		location fremontLoc = new location();
 		File file = new File("fremontLocation.txt");
 		String FremontAbsolute = file.getAbsolutePath();
 		fremontLoc.loadInformation(FremontAbsolute);
+		
+		location sanFranLoc = new location();
+		File sfFile = new File("sanFranLocation");
+		String SFAbsolute = sfFile.getAbsolutePath();
+		sanFranLoc.loadInformation(SFAbsolute);
+		
+		location OaklandLoc = new location();
+		File OakFile = new File("OaklandLocation.txt");
+		String oakAbsolute = OakFile.getAbsolutePath();
+		OaklandLoc.loadInformation(oakAbsolute);
+		/////////////////////////////////////////////////////////////////////////
 		
 		fremontLoc.addEquipment("Kids-Area", 4, "Under-Development");
 		fremontLoc.addServices("Training");
