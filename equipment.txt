@@ -1,0 +1,56 @@
+Hayward,"Locker Room, Basketball Court, Sauna Room, Kid's Club", 120,
+"Stationary Bicycle (20 active|0 need service|0 replacement),
+Treadmill (18 active|2 need service|0 replacement),
+Dumbbell set (10 active|0 need service|0 replacement),
+Barbell set (10 active|0 need service|0 replacement),
+Training Bench (7 active|0 need service|3 replacement),
+Kettlebell set (10 active|0 need service|0 replacement),
+Pull-up Frame & Bar (9 active|1 need service|0 replacement),
+Rowing Machine (13 active|1 need service|1 replacement),
+Fitness Ball (15 active|0 need service|0 replacement)"
+
+Union City,"Locker Room, Basketball Court, Kid's Club", 160,
+"Stationary Bicycle (23 active|1 need service|1 replacement),
+Treadmill (24 active|1 need service|0 replacement),
+Dumbbell set (10 active|0 need service|0 replacement),
+Barbell set (19 active|0 need service|1 replacement),
+Training Bench (20 active|0 need service|0 replacement),
+Kettlebell set (10 active|0 need service|0 replacement),
+Pull-up Frame & Bar (19 active|1 need service|0 replacement),
+Rowing Machine (15 active|0 need service|0 replacement),
+Fitness Ball (15 active|0 need service|0 replacement)"
+
+Oakland,"Locker Room, Swimming Pool, Kid's Club", 165,
+"Stationary Bicycle (29 active|0 need service|1 replacement),
+Treadmill (29 active|0 need service|1 replacement),
+Dumbbell set (15 active|0 need service|0 replacement),
+Barbell set (25 active|0 need service|0 replacement),
+Training Bench (25 active|0 need service|0 replacement),
+Kettlebell set (10 active|0 need service|0 replacement),
+Pull-up Frame & Bar (25 active|0 need service|0 replacement),
+Rowing Machine (15 active|0 need service|0 replacement),
+Fitness Ball (15 active|0 need service|0 replacement)"
+
+San Francisco,"Locker Room, Sauna Room, Kid's Club", 160,
+"Stationary Bicycle (22 active|2 need service|1 replacement),
+Treadmill (24 active|1 need service|0 replacement),
+Dumbbell set (10 active|0 need service|0 replacement),
+Barbell set (19 active|1 need service|0 replacement),
+Training Bench (19 active|1 need service|0 replacement),
+Kettlebell set (10 active|0 need service|0 replacement),
+Pull-up Frame & Bar (19 active|1 need service|0 replacement),
+Rowing Machine (14 active|1 need service|0 replacement),
+Fitness Ball (15 active|0 need service|0 replacement)"
+
+Santa Clara,"Locker Room, Swimming Pool, Basketball Court, Tennis Court, Kid's Club", 255,
+"Stationary Bicycle (37 active|2 need service|1 replacement),
+Treadmill (37 active|1 need service|2 replacement),
+Dumbbell set (19 active|0 need service|1 replacement),
+Barbell set (30 active|0 need service|0 replacement),
+Training Bench (29 active|1 need service|0 replacement),
+Kettlebell set (15 active|0 need service|0 replacement),
+Pull-up Frame & Bar (30 active|0 need service|0 replacement),
+Rowing Machine (25 active|0 need service|0 replacement),
+Fitness Ball (25 active|0 need service|0 replacement)"
+
+

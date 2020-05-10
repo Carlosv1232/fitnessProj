@@ -1,0 +1,13 @@
+location.txt 
+- street name, city, zip code
+- service, total equipment, how busy the location
+
+equipment.txt/ facility.txt
+- location, amenities, total gym equipment, gym equipment's condition
+
+employee.txt
+- first name, last name, ID, title, clock in, clock out
+
+customer.txt
+- first name, last name, ID, membership status [active/nonactive/new], membership duration
+- check in, find near gym location
