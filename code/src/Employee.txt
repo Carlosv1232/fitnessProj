@@ -1,0 +1,25 @@
+Employees 
+
+Jessica Johnson -- Personal Trainer --- 
+Username: we12
+Password: hello1
+
+James Rodriguez -- Member Service Rep.--
+Username: jr09
+Passoword: 9tyyh
+
+Lillian Anderson -- Front Desk--
+Username: 02Wq
+Password: 1eisd
+
+Alex Johnes --	 Manager -- 
+Username: ow53
+Password: 0dqdj
+
+Victoria Hernandez -- Kid's Club Staff
+Username: qjdj
+Password: dskz3
+
+Patrick Star -- Personal Trainer-- 
+Username: star
+Password: sbfb5
