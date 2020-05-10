@@ -421,8 +421,9 @@ public class location {
 						
 						unSplit = line;
 						String[] unSplitEmp = unSplit.split(",");
-						for(int i = 0; i < unSplitEmp.length; i++) {
+						for(int i = 0; i < unSplitEmp.length; i++) {	
 							String[] split = unSplitEmp[i].split("_");
+							System.out.println(split.length);
 							employee temp = new employee(split[0], split[1], split[2], split[3], split[4], split[5], Boolean.parseBoolean(split[6]));
 							System.out.println(split[0] + " " + split[1] + " " + split[2] + " " + split[3] + " " + split[4] + " " + split[5] + " " + Boolean.parseBoolean(split[6]));
 							addEmployee(temp);

@@ -24,7 +24,7 @@ public class main {
 		fremontLoc.loadInformation(FremontAbsolute);
 		
 		location sanFranLoc = new location();
-		File sfFile = new File("sanFranLocation");
+		File sfFile = new File("sanFranLocation.txt");
 		String SFAbsolute = sfFile.getAbsolutePath();
 		sanFranLoc.loadInformation(SFAbsolute);
 		
@@ -34,12 +34,13 @@ public class main {
 		OaklandLoc.loadInformation(oakAbsolute);
 		/////////////////////////////////////////////////////////////////////////
 		
+		//				GUI SHOULD START FROM HERE, CALL GUI MAIN			   //
 		
-		
+		/////////////////////////////////////////////////////////////////////////
 		File testFile = new File("saveTest.txt");
 		String testAbso = testFile.getAbsolutePath();
 		
-		fremontLoc.saveinformation(testAbso);
+		sanFranLoc.saveinformation(testAbso);
 		
 		
 		
