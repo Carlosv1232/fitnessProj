@@ -42,6 +42,13 @@ public class employee extends User {
 		return isManager;
 	}
 	
+	public String returnDate() {
+		return date_joined;
+	}
+	
+	public String returnPosition() {
+		return position;
+	}
 	
 	public String toString() {
 		/*

@@ -329,6 +329,7 @@ public class location {
 		for(int i = 0; i < numOfEquip; i++) {
 			result = result + equip[i].toString() + ",";	//this will return: Name_Code_Status, Name_Code_Status
 		}
+		System.out.println(result);
 		return result;
 	}
 	
