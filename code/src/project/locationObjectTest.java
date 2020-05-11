@@ -21,10 +21,10 @@ public class locationObjectTest {
 		employee[] arr1 = {emp1, emp2, emp3};	//we will 
 		
 		
-		equiptment eq1 = new equiptment("Stationary-Bike", 1, "Available");
-		equiptment eq2 = new equiptment("Treadmill", 2, "Available");
-		equiptment eq3 = new equiptment("Dumbell-Set", 3, "Under-Maintainance");
-		equiptment[] arr2 = {eq1, eq2, eq3};
+		equipment eq1 = new equipment("Stationary-Bike", 1, "Available");
+		equipment eq2 = new equipment("Treadmill", 2, "Available");
+		equipment eq3 = new equipment("Dumbell-Set", 3, "Under-Maintainance");
+		equipment[] arr2 = {eq1, eq2, eq3};
 		
 		String locManager = "Carlos";
 
@@ -36,7 +36,7 @@ public class locationObjectTest {
 	@Test
 	public void testLocation() {
 		System.out.println("");
-		assertEquals("Stationary-Bike_1_Available,Treadmill_2_Available,Dumbell-Set_3_Under-Maintenance,", Fremont.getEquiptment());	//this is to test that the equipment is properly being stored
+		assertEquals("Stationary-Bike_1_Available,Treadmill_2_Available,Dumbell-Set_3_Under-Maintenance,", Fremont.getEquipment());	//this is to test that the equipment is properly being stored
 		
 	}
 
