@@ -20,12 +20,12 @@ public class main {
 		/////////////////////////////////////////////////////////////////////////
 		//this will be loading in all the information for all of the locations//
 		location fremontLoc = new location();
-		File file = new File("fremontLocation.txt");
+		File file = new File("FremontLocation.txt");
 		String FremontAbsolute = file.getAbsolutePath();
 		fremontLoc.loadInformation(FremontAbsolute);
 		
 		location sanFranLoc = new location();
-		File sfFile = new File("sanFranLocation.txt");
+		File sfFile = new File("SanFranciscoLocation.txt");
 		String SFAbsolute = sfFile.getAbsolutePath();
 		sanFranLoc.loadInformation(SFAbsolute);
 		
