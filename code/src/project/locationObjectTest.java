@@ -1,6 +1,8 @@
 package project;
 import static org.junit.Assert.*;
 
+import java.io.File;
+
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -8,7 +10,8 @@ import org.junit.Test;
 public class locationObjectTest {
 
 
-	
+	// I attempted to use BeforeClass to set up the classes before each test, but i kept running into problems
+	/*
 	@BeforeClass
 	public static void setup() {
 		String locationName = "Fremont";
@@ -28,18 +31,45 @@ public class locationObjectTest {
 		
 		String locManager = "Carlos";
 
-		location Fremont = new location(locationName, serv, arr1, arr2, locManager);
+		//Fremont = new location(locationName, serv, arr1, arr2, locManager);
+		Fremont.
+		
+		
 		//System.out.println(Fremont.toString());
 	}
-	
+	*/
 	
 	@Test
-	public void testLocation() {
-		System.out.println("");
-		assertEquals("Stationary-Bike_1_Available,Treadmill_2_Available,Dumbell-Set_3_Under-Maintenance,", Fremont.getEquiptment());	//this is to test that the equipment is properly being stored
+	public void testLocationConstruction() {
+		location fremontLoc = new location();
+		File file = new File("fremontLocation.txt");
+		String FremontAbsolute = file.getAbsolutePath();
+		fremontLoc.loadInformation(FremontAbsolute);
 		
+		assertEquals(3, fremontLoc.getNumOfEquip());	//this is to test that the equipment is properly being stored
+		assertEquals(5, fremontLoc.getNumOfEmp());
+		assertEquals(3, fremontLoc.getNumOfServices());
+	
+		System.out.println(fremontLoc.getLocationinfo());
+		//assertEquals("Stationary-Bike_1_Available,Treadmill_2_Available,Dumbell-Set_3_Under-Maintainance,", Fremont.getEquiptment());
 	}
 
+	@Test
+	public void testAdding() {
+		location fremontLoc = new location();
+		File file = new File("fremontLocation.txt");
+		String FremontAbsolute = file.getAbsolutePath();
+		fremontLoc.loadInformation(FremontAbsolute);
+		
+		fremontLoc.addEquipment("Thing", 5, "Broken");
+		assertEquals("Stationary-Bike_1_Available,Treadmill_2_Available,Dumbell-Set_3_Under-maintenance,Thing_5_Broken,", fremontLoc.getEquiptment());
+		
+		
+		fremontLoc.addServices("Toilet");
+		System.out.println(fremontLoc.getServices());
+		assertEquals("Pool,BasketBall-Court,Sauna,Toilet," , fremontLoc.getServices());
+		
+	}
 	
 
 }

@@ -39,10 +39,15 @@ public class main {
 		//				GUI SHOULD START FROM HERE, CALL GUI MAIN			   //
 		
 		/////////////////////////////////////////////////////////////////////////
+		System.out.println("###############################################################");
+		System.out.println(fremontLoc.getEquiptment());
+		System.out.println("###############################################################");
 		
+		
+		/*
 		Gui gui = new Gui();
 		gui.initialize();
-		
+		*/
 		File testFile = new File("saveTest.txt");
 		String testAbso = testFile.getAbsolutePath();
 		

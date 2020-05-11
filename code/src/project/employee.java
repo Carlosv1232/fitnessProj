@@ -31,6 +31,13 @@ public class employee extends User {
 		isManager = manager;
 	}
 	
+	public employee() {
+		super("","","","");
+		position = "";
+		isManager = false;
+		date_joined = "";
+	}
+	
 	public void changePosition(String pos) {
 		position = pos;
 	}

@@ -16,7 +16,7 @@ public class location {
 	
 	String[] Services;	//this will contain everything that each location offers
 	int numOfServices;
-	int servicesLimit = 5;
+	int servicesLimit = 10;
 	
 	employee[] loc_emp;	//array to hold the location employees
 	int numOfEmp;	//number of employees at the location
@@ -24,7 +24,7 @@ public class location {
 		
 	equiptment[] equip;	//holds all the equipment that the location has
 	int numOfEquip;	//holds the number of equipment
-	int equipmentLimit = 10;	//set to 10 for testing purposes, real applications will have larger
+	int equipmentLimit = 15;	//set to 10 for testing purposes, real applications will have larger
 	
 	String isBusy;	//this will store whether the location is busy or not, { slow, medium, High }
 					//will be generated every time the class is built
@@ -43,8 +43,9 @@ public class location {
 	}
 	
 	public location(String loc, String serv[], employee emp[], equiptment eq[],String loc_man) {
+		
 		String[] Services = new String[servicesLimit];
-		loc_emp = new employee[emplLimit];
+		employee[] loc_emp = new employee[emplLimit];
 		equiptment[] equip = new equiptment[equipmentLimit];
 		
 		location = loc;
@@ -52,22 +53,27 @@ public class location {
 		//for loop to store services
 		System.out.println(serv.length);
 		for(int i = 0; i < serv.length; i++) {
+			
 			Services[i] = serv[i];
 			numOfServices++;
 		}
 		
 		//for loop to store location employees
 		for(int i = 0; i < emp.length; i++) {
+			
 			loc_emp[i] = emp[i];
 		
 			numOfEmp++;
 		}
 		
 		for(int i = 0; i < eq.length; i++) {
+	
 			equip[i] = eq[i];
 			numOfEquip++;
+			
 		}
 		
+	
 		location_manager = loc_man;	//location manager
 		
 		int ranNum = ThreadLocalRandom.current().nextInt(1, 4);	//will generate a number between 1 - 3
@@ -213,7 +219,9 @@ public class location {
 		}
 		
 		Services[numOfServices] = service;
+		System.out.println(Services[numOfServices] + " Was added to the list");
 		numOfServices++;
+		
 		
 		if(numOfServices == servicesLimit) {
 			System.out.println("Services are now full!");
@@ -263,6 +271,10 @@ public class location {
 	
 	public int getNumOfEmp() {	//returns the number of employees
 		return numOfEmp;
+	}
+	
+	public int getNumOfServices() {
+		return numOfServices;
 	}
 	
 	public int getNumOfEquip() {
@@ -325,10 +337,11 @@ public class location {
 	
 	public String getEquiptment() {	//this function will work like a toString() function, use .split(",")
 		String result = "";
+		
 		for(int i = 0; i < numOfEquip; i++) {
 			result = result + equip[i].toString() + ",";	//this will return: Name_Code_Status, Name_Code_Status
 		}
-		System.out.println(result);
+		
 		return result;
 	}
 	
