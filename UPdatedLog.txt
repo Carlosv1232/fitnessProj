@@ -1,0 +1,80 @@
+commit 2f8d0634d5bc035fb13bb58228c012ce09af8fdc
+Author: Genesis Nunez <nunez.genesis3@gmail.com>
+Date:   Thu Apr 23 17:07:01 2020 -0700
+
+    Updated on GUI, it runs but it is still not perfect
+
+commit b8de1705224e5b540c8fecccec75a1ace554ecfb
+Author: Genesis Nunez <nunez.genesis3@gmail.com>
+Date:   Thu Apr 23 17:01:55 2020 -0700
+
+    GUI now runs, but it is still missing some values and inputs to make it more complex
+
+commit d04261d6927590f96df4b0cf7a5f7d8ede8cd705
+Merge: 398bda7 77b216d
+Author: Genesis Nunez <nunez.genesis3@gmail.com>
+Date:   Fri Apr 10 20:55:34 2020 -0700
+
+    Merge branch 'master' of https://github.com/Carlosv1232/fitnessProj
+
+commit 398bda7c0001b96c2baf685d5efcbfaed9ac3da0
+Author: Genesis Nunez <nunez.genesis3@gmail.com>
+Date:   Fri Apr 10 20:21:31 2020 -0700
+
+    Started working on the GUI. Not perfect and will work on it more, will start working on tests.
+
+commit 77b216d4dd34565368169c452fb3ed47dd055453
+Merge: bbd8b03 91b88f2
+Author: Carlosv1232 <60190811+Carlosv1232@users.noreply.github.com>
+Date:   Fri Apr 10 17:28:44 2020 -0700
+
+    Merge pull request #2 from Carlosv1232/Carlos
+    
+    Carlos
+
+commit 91b88f24a39d52d949a2c046b119e0e5c02ea52b
+Author: Carlosv1232 <60190811+Carlosv1232@users.noreply.github.com>
+Date:   Fri Apr 10 17:20:46 2020 -0700
+
+    Progress so far for objects, FOR PHASE 5
+
+commit a9815ddcc928f1d1d36f29c94a6d6bf445295715
+Author: Carlosv1232 <60190811+Carlosv1232@users.noreply.github.com>
+Date:   Fri Apr 10 15:45:47 2020 -0700
+
+    uploading current project file progression
+
+commit bbd8b03468e9768daf2612c90fe7dcb1acf34365
+Merge: 5a6b56d 493019c
+Author: vanessatiffany <60334004+vanessatiffany@users.noreply.github.com>
+Date:   Sun Mar 15 21:17:42 2020 -0700
+
+    Merge pull request #1 from Carlosv1232/Vanessa
+    
+    Add Fitness Center Project Role file
+
+commit 493019c158679e17ef3c106b01940583044ef79f
+Author: Vanessa T <vanessatiffany7@gmail.com>
+Date:   Sun Mar 15 21:07:43 2020 -0700
+
+    Add Fitness Center Project Role file
+
+commit 5a6b56d577269f542db07bae55b4ec54c23810ba
+Author: Genesis Nunez <nunez.genesis3@gmail.com>
+Date:   Sat Mar 14 22:29:43 2020 -0700
+
+    updated on the schedule and the dates for our group to work on the project
+
+commit 44586f77ee0d8be6e6894945d0c34c99ed8c714b
+Author: Carlosv1232 <60190811+Carlosv1232@users.noreply.github.com>
+Date:   Sat Mar 14 19:10:54 2020 -0700
+
+    commiting all the files from the previous group
+    
+    this is all the files that the previous group uploaded onto git hub, these do not contain the updated files that will correlate the files with the new group members. Updated files will be pushed into a later commit
+
+commit f8988d3207c54795cadcbd459c8629ca89d245a5
+Author: Carlosv1232 <60190811+Carlosv1232@users.noreply.github.com>
+Date:   Sat Mar 14 18:41:51 2020 -0700
+
+    Initial commit
