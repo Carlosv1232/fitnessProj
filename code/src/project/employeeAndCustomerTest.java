@@ -37,7 +37,7 @@ public class employeeAndCustomerTest {
 	}
 	
 	@Test
-	public void testBassUsernameLogin() {
+	public void testBadUsernameLogin() {
 		employee test = new employee("Carlos", "Vera", "Username", "Password", "Snack-Quality-Control");
 		customer test2 = new customer("NotCarlos", "NotVera", "NotUsername", "NotPassword");
 		

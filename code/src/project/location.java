@@ -231,9 +231,9 @@ public class location {
 			return;
 		}
 		
-		System.out.println("Number Of Services: " + getNumOfServices() + " Limit for services: " + servicesLimit);
+		System.out.println("Number Of Services: " + numOfServices + " Limit for services: " + servicesLimit);
 		System.out.println(Services[numOfServices - 1]);
-		
+		System.out.println(Services.length);
 		Services[numOfServices] = service;
 		System.out.println(Services[numOfServices] + " Was added to the list");
 		numOfServices++;
@@ -251,14 +251,14 @@ public class location {
 			System.out.println("There are no Services to remove");
 			return;
 		}
-		if(Services[numOfServices - 1] == service) {	//checks if the service is the last one in the list
+		if(Services[numOfServices - 1].equals(service)) {	//checks if the service is the last one in the list
 			numOfServices--;
 			return;
 		}
 		
 		for(int i = 0; i < numOfServices - 1; i++) {	//iterate through the list to find the service
-			if(Services[i] == service) {
-				for(int j = i; i < numOfServices - 1; j++) {
+			if(Services[i].equals(service)) {
+				for(int j = i; j < numOfServices - 1; j++) {
 					Services[j] = Services[j+1];	//this is going to skip over the element within the array
 				}
 				numOfServices--;
@@ -428,15 +428,17 @@ public class location {
 						System.out.println("Case :" + count + ", Loading in the Services");
 						System.out.println(line);
 						String unSplit = line;
-						//String[] data = unSplit.split(",");
+						String[] data = unSplit.split(",");
 						
-						Services = unSplit.split(",");
 						
-						for(int i = 0; i < Services.length; i++) {
+						
+						for(int i = 0; i < data.length; i++) {
+							Services[i] = data[i];
 							System.out.println(Services[i]);
+							numOfServices++;
 						}
 						//System.out.println(Services.length);
-						numOfServices = Services.length;	//sets the classes number of services
+						
 						System.out.println("Total Number of Services added: " + numOfServices);
 						count++;
 						break;

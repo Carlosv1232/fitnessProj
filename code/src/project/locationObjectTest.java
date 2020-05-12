@@ -75,6 +75,39 @@ public class locationObjectTest {
 		System.out.println(fremontLoc.getServices());
 		assertEquals("Pool,BasketBall-Court,Sauna,Toilet," , fremontLoc.getServices());
 		
+		employee emp3 = new employee("Guy", "Fieri", "FoodLover", "Taco", "Guy-That-Eats-Taco");
+		fremontLoc.addEmployee(emp3);	//when adding an employee, the constructor will store in the date, and assign isManager to false
+		//Employee information to be added to the list: Guy_Fieri_FoodLover_Taco_Guy-That-Eats-Taco_05-11-2020_false,
+		assertEquals("Carlos_Vera_user123_pass123_Manager_04-02-2020_true,Manuel_Forbes_we9874_pass987_Trainer_05-20-2019_false,Mabel_Kelley_df6543_pass456_Maintainence_01-02-2015_false,Richard_Cake_hg1245_pass159_Front-Desk_04-20-2020_false,Jawad_Burt_ea8566_pass147_Sanitation_02-06-2077_false,Guy_Fieri_FoodLover_Taco_Guy-That-Eats-Taco_05-11-2020_false,", fremontLoc.employeeFullToString());
+	}
+	
+	@Test
+	public void testRemove() {
+		location fremontLoc = new location();
+		File file = new File("fremontLocation.txt");
+		String FremontAbsolute = file.getAbsolutePath();
+		fremontLoc.loadInformation(FremontAbsolute);
+		
+		fremontLoc.removeEquipment("Stationary-Bike");
+		assertEquals("Treadmill_2_Available,Dumbell-Set_3_Under-maintenance,", fremontLoc.getEquiptment());
+		fremontLoc.removeEquipment("Treadmill");
+		assertEquals("Dumbell-Set_3_Under-maintenance,", fremontLoc.getEquiptment());
+		fremontLoc.removeEquipment("Dumbell-Set");
+		assertEquals("", fremontLoc.getEquiptment());
+		//removed all equipment for testing
+		
+		fremontLoc.removeServices("Pool");
+		assertEquals("BasketBall-Court,Sauna,", fremontLoc.getServices());
+		fremontLoc.removeServices("Sauna");
+		assertEquals("BasketBall-Court,", fremontLoc.getServices());
+		fremontLoc.removeServices("BasketBall-Court");
+		assertEquals("", fremontLoc.getServices());
+		
+		fremontLoc.removeEmployeeName("user123");	//removing Carlos Vera, the first employee on the list
+		assertEquals("Manuel_Forbes_we9874_pass987_Trainer_05-20-2019_false,Mabel_Kelley_df6543_pass456_Maintainence_01-02-2015_false,Richard_Cake_hg1245_pass159_Front-Desk_04-20-2020_false,Jawad_Burt_ea8566_pass147_Sanitation_02-06-2077_false,", fremontLoc.employeeFullToString());
+		
+		
+		
 	}
 	
 	
