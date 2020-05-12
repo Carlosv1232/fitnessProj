@@ -21,12 +21,12 @@ public class main {
 		/////////////////////////////////////////////////////////////////////////
 		//this will be loading in all the information for all of the locations//
 		location fremontLoc = new location();
-		File file = new File("fremontLocation.txt");
+		File file = new File("FremontLocation.txt");
 		String FremontAbsolute = file.getAbsolutePath();
 		fremontLoc.loadInformation(FremontAbsolute);
 		
 		location sanFranLoc = new location();
-		File sfFile = new File("sanFranLocation.txt");
+		File sfFile = new File("SanFranciscoLocation.txt");
 		String SFAbsolute = sfFile.getAbsolutePath();
 		sanFranLoc.loadInformation(SFAbsolute);
 		
@@ -106,10 +106,10 @@ public class main {
 		employee[] arr1 = {emp1, emp2, emp3};	//we will 
 		
 		
-		equiptment eq1 = new equiptment("Stationary Bike", 1, "Available");
-		equiptment eq2 = new equiptment("Treadmill", 2, "Available");
-		equiptment eq3 = new equiptment("Dumbell Set", 3, "Under Maintainance");
-		equiptment[] arr2 = {eq1, eq2, eq3};
+		equipment eq1 = new equipment("Stationary Bike", 1, "Available");
+		equipment eq2 = new equipment("Treadmill", 2, "Available");
+		equipment eq3 = new equipment("Dumbell Set", 3, "Under Maintainance");
+		equipment[] arr2 = {eq1, eq2, eq3};
 		
 		String locManager = "Carlos";
 
@@ -156,7 +156,7 @@ public class main {
 		
 		System.out.println(Fremont.getEmployees());	//testing getEmployees() methods
 		System.out.println(Fremont.getNumOfEquip());
-		System.out.println(Fremont.getEquiptment());
+		System.out.println(Fremont.getEquipment());
 		System.out.println(Fremont.getLocationinfo());
 	*/
 	

@@ -2,17 +2,17 @@ package project;
 //package project;
 import java.util.*;
 
-public class equiptment {	//I know its spelled wrong!
+public class equipment {	//I know its spelled wrong!
 	String name;
 	int code;
 	String status;
 	
-	public equiptment() {
+	public equipment() {
 		name = "";
 		code = 0;
 		status = "";
 	}
-	public equiptment(String n, int c, String s) {
+	public equipment(String n, int c, String s) {
 		name = n;
 		code = c;
 		status = s;

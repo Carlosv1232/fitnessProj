@@ -22,7 +22,7 @@ public class location {
 	int numOfEmp;	//number of employees at the location
 	int emplLimit = 15;	//each location will be limited by 10 employees including the manager
 		
-	equiptment[] equip;	//holds all the equipment that the location has
+	equipment[] equip;	//holds all the equipment that the location has
 	int numOfEquip;	//holds the number of equipment
 	int equipmentLimit = 15;	//set to 10 for testing purposes, real applications will have larger
 	
@@ -38,8 +38,9 @@ public class location {
 		numOfServices = 0;
 		numOfEmp = 0;
 		numOfEquip = 0;
-		equip = new equiptment[equipmentLimit];
+		equip = new equipment[equipmentLimit];
 		loc_emp = new employee[emplLimit];
+		Services = new String[servicesLimit];
 		int ranNum = ThreadLocalRandom.current().nextInt(1, 4);	//will generate a number between 1 - 3
 		if(ranNum == 1) {
 			isBusy = "Slow";
@@ -50,11 +51,15 @@ public class location {
 		}
 	}
 	
-	public location(String loc, String serv[], employee emp[], equiptment eq[],String loc_man) {
+	public location(String loc, String serv[], employee emp[], equipment eq[],String loc_man) {
 		
 		String[] Services = new String[servicesLimit];
+
 		employee[] loc_emp = new employee[emplLimit];
-		equiptment[] equip = new equiptment[equipmentLimit];
+		equipment[] equip = new equipment[equipmentLimit];
+
+		loc_emp = new employee[emplLimit];
+
 		
 		location = loc;
 		
@@ -219,12 +224,15 @@ public class location {
 	}
 	
 	public void addServices(String service) {	
-	//services and equiptment are different things in this case
+	//services and equipment are different things in this case
 	//services could apply to swimming pool, sauna, basketball court, personal training
 		if(servicesLimit == numOfServices) {	//checks the limit of services
 			System.out.println("The limit of services has been reached");
 			return;
 		}
+		
+		System.out.println("Number Of Services: " + getNumOfServices() + " Limit for services: " + servicesLimit);
+		System.out.println(Services[numOfServices - 1]);
 		
 		Services[numOfServices] = service;
 		System.out.println(Services[numOfServices] + " Was added to the list");
@@ -289,14 +297,14 @@ public class location {
 		return numOfEquip;
 	}
 	
-	public void addEquipment(String name, int code, String status) {	//the user will have to enter in the equiptment information
+	public void addEquipment(String name, int code, String status) {	//the user will have to enter in the equipment information
 	//we will check if user is manager within the GUI
 		if(numOfEquip == equipmentLimit) {
 			System.out.println("The limit for equipment has been reached");
 			return;
 		}
 		System.out.println("Number of Equip: " + numOfEquip);
-		equiptment newEquip = new equiptment(name, code, status);
+		equipment newEquip = new equipment(name, code, status);
 		System.out.println(newEquip.toString());
 		equip[numOfEquip] = newEquip;
 		numOfEquip++;
@@ -396,7 +404,7 @@ public class location {
 			//1st line: Location name.
 			//2nd line: Location manager
 			//3rd: Services
-			//4th: Equiptment
+			//4th: Equipment
 			//5th: Maybe Employees
 			//br.readLine();
 			while((line = br.readLine()) != null) {
@@ -440,7 +448,7 @@ public class location {
 						String[] unSplitEqui = unSplit.split(",");
 						for(int i = 0; i < unSplitEqui.length; i++) {
 							String[] split = unSplitEqui[i].split("_");
-							//equiptment only has three properties, so 3 elements
+							//equipment only has three properties, so 3 elements
 							int code = Integer.parseInt(split[1]);
 							//System.out.println(Integer.parseInt(split[1]));
 							//System.out.println(code);
@@ -563,7 +571,7 @@ public class location {
 	int numOfEmp;	//number of employees at the location
 	int emplLimit = 10;	//each location will be limited by 10 employees including the manager
 		
-	equiptment[] equip;	//holds all the equipment that the location has
+	equipment[] equip;	//holds all the equipment that the location has
 	int numOfEquip;	//holds the number of equipment
 	int equipmentLimit = 10;	//set to 10 for testing purposes, real applications will have larger
 	

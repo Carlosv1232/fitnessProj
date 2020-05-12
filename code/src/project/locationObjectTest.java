@@ -24,17 +24,17 @@ public class locationObjectTest {
 		employee[] arr1 = {emp1, emp2, emp3};	//we will 
 		
 		
-		equiptment eq1 = new equiptment("Stationary-Bike", 1, "Available");
-		equiptment eq2 = new equiptment("Treadmill", 2, "Available");
-		equiptment eq3 = new equiptment("Dumbell-Set", 3, "Under-Maintainance");
-		equiptment[] arr2 = {eq1, eq2, eq3};
+		equipment eq1 = new equipment("Stationary-Bike", 1, "Available");
+		equipment eq2 = new equipment("Treadmill", 2, "Available");
+		equipment eq3 = new equipment("Dumbell-Set", 3, "Under-Maintainance");
+		equipment[] arr2 = {eq1, eq2, eq3};
 		
 		String locManager = "Carlos";
 
 		//Fremont = new location(locationName, serv, arr1, arr2, locManager);
 		Fremont.
 		
-		
+		 
 		//System.out.println(Fremont.toString());
 	}
 	*/
@@ -45,6 +45,9 @@ public class locationObjectTest {
 		File file = new File("fremontLocation.txt");
 		String FremontAbsolute = file.getAbsolutePath();
 		fremontLoc.loadInformation(FremontAbsolute);
+
+		assertEquals("Stationary-Bike_1_Available,Treadmill_2_Available,Dumbell-Set_3_Under-maintenance,", fremontLoc.getEquiptment());	//this is to test that the equipment is properly being stored
+
 		
 		assertEquals(3, fremontLoc.getNumOfEquip());	//this is to test that the equipment is properly being stored
 		assertEquals(5, fremontLoc.getNumOfEmp());
@@ -52,8 +55,11 @@ public class locationObjectTest {
 	
 		System.out.println(fremontLoc.getLocationinfo());
 		//assertEquals("Stationary-Bike_1_Available,Treadmill_2_Available,Dumbell-Set_3_Under-Maintainance,", Fremont.getEquiptment());
+		
+		System.out.println(fremontLoc.LocIsBusy());
 	}
 
+	
 	@Test
 	public void testAdding() {
 		location fremontLoc = new location();
@@ -70,6 +76,7 @@ public class locationObjectTest {
 		assertEquals("Pool,BasketBall-Court,Sauna,Toilet," , fremontLoc.getServices());
 		
 	}
+	
 	
 
 }
