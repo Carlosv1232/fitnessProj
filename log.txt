@@ -1,3 +1,134 @@
+commit 302835a0f429e9d9d65a701ae7ea7f5aaef163df
+Author: Carlosv1232 <60190811+Carlosv1232@users.noreply.github.com>
+Date:   Mon May 11 21:04:23 2020 -0700
+
+    Fixed some bugs, and completed all the JUnit and JSuite files
+
+commit b659afd6dcb7f37b45d2e6a87e63582152abac74
+Merge: da0d761 914b5cf
+Author: Carlosv1232 <60190811+Carlosv1232@users.noreply.github.com>
+Date:   Mon May 11 19:53:37 2020 -0700
+
+    readding
+
+commit da0d761d8dd960a633fd4b98378891d1c9d20240
+Author: Carlosv1232 <60190811+Carlosv1232@users.noreply.github.com>
+Date:   Mon May 11 19:03:25 2020 -0700
+
+    fixed isBusy error
+
+commit 914b5cf48bdefcc62c8aec54c844051ba41e905e
+Author: vanessatiffany <60334004+vanessatiffany@users.noreply.github.com>
+Date:   Tue May 12 05:13:03 2020 +0700
+
+    Update main.java
+    
+    changed the location text file name
+
+commit ffa38ef11bc09e618c655fec5aa75192a2ab771a
+Author: Carlosv1232 <60190811+Carlosv1232@users.noreply.github.com>
+Date:   Sun May 10 23:28:50 2020 -0700
+
+    Updated code
+
+commit 5a4296980258fcbc3a0a88c20aa524d2238f66ee
+Author: vanessatiffany <60334004+vanessatiffany@users.noreply.github.com>
+Date:   Mon May 11 10:28:26 2020 +0700
+
+    Update main.java
+    
+    fixed misspelling word
+
+commit b54c36e3ce7be9a35c9aae82a61edd015049dde2
+Author: vanessatiffany <60334004+vanessatiffany@users.noreply.github.com>
+Date:   Mon May 11 10:27:34 2020 +0700
+
+    Update locationObjectTest.java
+    
+    fixed misspelling word
+
+commit 4ec3f71df6623b5eb90e50ae00f0aa6ac5f96d4a
+Author: vanessatiffany <60334004+vanessatiffany@users.noreply.github.com>
+Date:   Mon May 11 10:26:06 2020 +0700
+
+    Update location.java
+    
+    fixed misspelling word
+
+commit 643a88f8d4e659091842169a1b9ce198cd56073f
+Author: vanessatiffany <60334004+vanessatiffany@users.noreply.github.com>
+Date:   Mon May 11 10:21:38 2020 +0700
+
+    Update and rename equiptment.java to equipment.java
+    
+    fixed misspelling word
+
+commit 146190f0c7de4414e916a2398e073dd588fb8ed8
+Author: Carlosv1232 <60190811+Carlosv1232@users.noreply.github.com>
+Date:   Sun May 10 14:15:19 2020 -0700
+
+    Create a returnStatus function and LocIsBusy() for use in the GUI
+
+commit 8013ba13359d2d6d0e3173c2ff3a6714dc5a09f2
+Author: Carlosv1232 <60190811+Carlosv1232@users.noreply.github.com>
+Date:   Sun May 10 12:26:12 2020 -0700
+
+    current code
+
+commit 18f0da9f2e0f66743ca64fb86073d0116c128e8a
+Author: Carlosv1232 <60190811+Carlosv1232@users.noreply.github.com>
+Date:   Sat May 9 17:10:01 2020 -0700
+
+    Load and save functions work 100%
+
+commit 8d9a668fcd27ce201c677b66eb8f67193355af14
+Author: Carlosv1232 <60190811+Carlosv1232@users.noreply.github.com>
+Date:   Sat May 9 15:44:14 2020 -0700
+
+    Current progress on ensuring everything is running smooth
+
+commit 89ba01467d88270b28e4cb956602b472c74180ac
+Author: Carlosv1232 <60190811+Carlosv1232@users.noreply.github.com>
+Date:   Sat May 9 15:41:15 2020 -0700
+
+    Current progress on ensuring everything is running smooth
+
+commit 9320d1cbaa249489810048e95c094a753b4dd808
+Author: Carlosv1232 <60190811+Carlosv1232@users.noreply.github.com>
+Date:   Sat May 9 15:20:11 2020 -0700
+
+    uploading current progress
+
+commit 6eeeb106aea487a14092f68470cea3c001b18f5f
+Author: Carlosv1232 <60190811+Carlosv1232@users.noreply.github.com>
+Date:   Fri May 8 18:46:31 2020 -0700
+
+    Finished the function to load from a text file, working on save function
+
+commit 3dee89bc9e52ee2199736d14e3dee8f27444431f
+Author: Carlosv1232 <60190811+Carlosv1232@users.noreply.github.com>
+Date:   Sun May 3 17:52:02 2020 -0700
+
+    Current progress 05/03, Fixed some bugs and will be merging the gui code with the classes soon
+
+commit e14cc4ffa263dd9458126b3d027b202386aa1900
+Author: Carlosv1232 <60190811+Carlosv1232@users.noreply.github.com>
+Date:   Thu Apr 30 18:59:32 2020 -0700
+
+    added comments for the database arch may design the functions
+
+commit 49f49483ae0c5df192266183364dd40b5da9213d
+Author: Carlosv1232 <60190811+Carlosv1232@users.noreply.github.com>
+Date:   Thu Apr 30 18:32:43 2020 -0700
+
+    added isBusy generator within the location class
+
+commit ef5c2bc3f14fe487836967a3467a3f3813bebb6f
+Author: Carlosv1232 <60190811+Carlosv1232@users.noreply.github.com>
+Date:   Thu Apr 23 17:23:46 2020 -0700
+
+    final commit for last checkup
+
 commit e9edd5e50f8d3d3a60b4df567e70de1ce5c6d335
 Author: Carlosv1232 <60190811+Carlosv1232@users.noreply.github.com>
 Date:   Thu Apr 23 16:56:53 2020 -0700
