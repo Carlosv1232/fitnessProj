@@ -20,13 +20,14 @@ public class main {
 		
 		/////////////////////////////////////////////////////////////////////////
 		//this will be loading in all the information for all of the locations//
+		
 		location fremontLoc = new location();
 		File file = new File("FremontLocation.txt");
 		String FremontAbsolute = file.getAbsolutePath();
 		fremontLoc.loadInformation(FremontAbsolute);
 		
 		location sanFranLoc = new location();
-		File sfFile = new File("SanFranciscoLocation.txt");
+		File sfFile = new File("SanFranLocation.txt");
 		String SFAbsolute = sfFile.getAbsolutePath();
 		sanFranLoc.loadInformation(SFAbsolute);
 		
@@ -51,21 +52,18 @@ public class main {
 		});
 		
 		/////////////////////////////////////////////////////////////////////////
-		System.out.println("###############################################################");
-		System.out.println(fremontLoc.getEquiptment());
-		System.out.println("###############################################################");
 		
 		
-		/*
-		Gui gui = new Gui();
-		gui.initialize();
-		*/
+		
+		/*	Testing .saveInformation()
 		File testFile = new File("saveTest.txt");
 		String testAbso = testFile.getAbsolutePath();
+		*/
 		
-		sanFranLoc.saveinformation(testAbso);
-		
-		
+		//The Save information function should be called when the program is exited//
+		fremontLoc.saveinformation(FremontAbsolute);
+		sanFranLoc.saveinformation(SFAbsolute);
+		OaklandLoc.saveinformation(oakAbsolute);
 		
 		}
 }
