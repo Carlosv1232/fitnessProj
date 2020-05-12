@@ -55,12 +55,14 @@ public class Gui {
 	 */
 	public Gui() {
 		initialize();
+		frmFitnessCenterPage.setVisible(true);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	void initialize() {
+		
 		frmFitnessCenterPage = new JFrame();
 		frmFitnessCenterPage.setTitle("Fitness Center Page");
 		frmFitnessCenterPage.setBounds(100, 100, 574, 410);

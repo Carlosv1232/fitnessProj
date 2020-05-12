@@ -10,7 +10,8 @@ public class employeeAndCustomerTest {
 		//This is just testing if the date returns correct when constructor is called
 		employee test = new employee("Carlos", "Vera", "Username", "Password", "Snack-Quality-Control");
 		System.out.println("Date Joined: " + test.returnDate());
-		assertEquals("05-09-2020", test.returnDate());
+		System.out.println(test.returnDate());
+		assertEquals("05-11-2020", test.returnDate());	//the expected value must be updated the day it was run
 	}
 
 	@Test

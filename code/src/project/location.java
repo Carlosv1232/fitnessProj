@@ -40,6 +40,14 @@ public class location {
 		numOfEquip = 0;
 		equip = new equiptment[equipmentLimit];
 		loc_emp = new employee[emplLimit];
+		int ranNum = ThreadLocalRandom.current().nextInt(1, 4);	//will generate a number between 1 - 3
+		if(ranNum == 1) {
+			isBusy = "Slow";
+		} else if(ranNum == 2) {
+			isBusy = "Medium";
+		} else if(ranNum == 3) {
+			isBusy = "High";
+		}
 	}
 	
 	public location(String loc, String serv[], employee emp[], equiptment eq[],String loc_man) {
