@@ -1,10 +1,11 @@
 package project;
+//import java.lang.Boolean;
 import java.lang.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 //import java.lang.Boolean;
 
-public class employee extends User {
+public class Employee extends User {
 
 	String position;	//this will determine if an employee still has rights to a hired employee
 	boolean isManager;	//managers will be given access to more functionality
@@ -13,7 +14,7 @@ public class employee extends User {
 	//employee will be able to clock in and out, include total time worked, 
 	
 	
-	public employee(String fn, String ln, String user, String pass, String pos) {
+	public Employee(String fn, String ln, String user, String pass, String pos) {
 		super(fn, ln, user, pass);	//passes the values to the inherited class constructor
 									//sends First, last, username, password, and boolean isHired
 		position = pos;
@@ -23,19 +24,12 @@ public class employee extends User {
 		date_joined = formatter.format(date);	//returns the day the class was constructed
 	}
 	
-	public employee(String fn, String ln, String user, String pass, String pos, String date, boolean manager) {
+	public Employee(String fn, String ln, String user, String pass, String pos, String date, boolean manager) {
 		//this constructor will be used for loading in data
 		super(fn, ln, user, pass);
 		position = pos;
 		date_joined = date;
 		isManager = manager;
-	}
-	
-	public employee() {
-		super("","","","");
-		position = "";
-		isManager = false;
-		date_joined = "";
 	}
 	
 	public void changePosition(String pos) {
@@ -65,7 +59,7 @@ public class employee extends User {
 			managerBool = "true";
 		} else if(isManager === false) {
 			managerBool = false;
-		}
+		} 
 		*/
 		return (super.toString() + "_" + position + "_" + date_joined + "_" + isManager);
 		//return (super.toString() + "_" + position + "_" + date_joined + "_" + managerBool);
@@ -78,6 +72,10 @@ public class employee extends User {
 		return (super.allInfo() + "_" + position + "_" + date_joined + "_" + isManager);
 	}
 
-	//since employee extends to User, employee could use checkSignIn(String user, String pass), returns boolean
+
+
+
 	
+	
+
 }

@@ -1,14 +1,17 @@
 package project;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 
-public class customer extends User{
+public class Customer extends User{
 
 	String date_joined;	//constructor will initialize this variable
 	Boolean status;	//true for members that are active, false for those who aren't
 	
-	public customer(String fn, String ln, String user, String pass) {
+	public Customer(String fn, String ln, String user, String pass) {
 		super(fn, ln, user, pass);
 		Date date = new Date();
 		SimpleDateFormat formatter = new SimpleDateFormat("MM-dd-yyyy");
@@ -31,7 +34,4 @@ public class customer extends User{
 	public Boolean getStatus() {
 		return status;
 	}
-	
-	//since Customer extends to User, employee could use checkSignIn(String user, String pass), returns boolean
-	
 }

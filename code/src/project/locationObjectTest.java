@@ -18,10 +18,10 @@ public class locationObjectTest {
 		String[] serv = {"Pool", "BasketBall Court", "Sauna"};
 		//String Fname, String Lname, String username, String pass
 		//first name, last name, username, password
-		employee emp1 = new employee("Carlos", "Vera", "username", "password", "Location-Manager");//first name, last name, username, password, position
-		employee emp2 = new employee("Bob", "Soup", "SoupLover", "Soup", "Cool-Guy");
-		employee emp3 = new employee("Guy", "Fieri", "FoodLover", "Taco", "Guy-That-Eats-Taco");
-		employee[] arr1 = {emp1, emp2, emp3};	//we will 
+		Employee emp1 = new Employee("Carlos", "Vera", "username", "password", "Location-Manager");//first name, last name, username, password, position
+		Employee emp2 = new Employee("Bob", "Soup", "SoupLover", "Soup", "Cool-Guy");
+		Employee emp3 = new Employee("Guy", "Fieri", "FoodLover", "Taco", "Guy-That-Eats-Taco");
+		Employee[] arr1 = {emp1, emp2, emp3};	//we will 
 		
 		
 		equipment eq1 = new equipment("Stationary-Bike", 1, "Available");
@@ -46,7 +46,7 @@ public class locationObjectTest {
 		String FremontAbsolute = file.getAbsolutePath();
 		fremontLoc.loadInformation(FremontAbsolute);
 
-		assertEquals("Stationary-Bike_1_Available,Treadmill_2_Available,Dumbell-Set_3_Under-maintenance,", fremontLoc.getEquiptment());	//this is to test that the equipment is properly being stored
+		assertEquals("Stationary-Bike_1_Available,Treadmill_2_Available,Dumbell-Set_3_Under-maintenance,", fremontLoc.getEquipment());	//this is to test that the equipment is properly being stored
 
 		
 		assertEquals(3, fremontLoc.getNumOfEquip());	//this is to test that the equipment is properly being stored
@@ -68,17 +68,17 @@ public class locationObjectTest {
 		fremontLoc.loadInformation(FremontAbsolute);
 		
 		fremontLoc.addEquipment("Thing", 5, "Broken");
-		assertEquals("Stationary-Bike_1_Available,Treadmill_2_Available,Dumbell-Set_3_Under-maintenance,Thing_5_Broken,", fremontLoc.getEquiptment());
+		assertEquals("Stationary-Bike_1_Available,Treadmill_2_Available,Dumbell-Set_3_Under-maintenance,Thing_5_Broken,", fremontLoc.getEquipment());
 		
 		
 		fremontLoc.addServices("Toilet");
 		System.out.println(fremontLoc.getServices());
 		assertEquals("Pool,BasketBall-Court,Sauna,Toilet," , fremontLoc.getServices());
 		
-		employee emp3 = new employee("Guy", "Fieri", "FoodLover", "Taco", "Guy-That-Eats-Taco");
-		fremontLoc.addEmployee(emp3);	//when adding an employee, the constructor will store in the date, and assign isManager to false
+		Employee emp3 = new Employee("Guy", "Fieri", "FoodLover", "Taco", "Guy-That-Eats-Taco");
+		fremontLoc.addEmployee(emp3);	//when adding an Employee, the constructor will store in the date, and assign isManager to false
 		//Employee information to be added to the list: Guy_Fieri_FoodLover_Taco_Guy-That-Eats-Taco_05-11-2020_false,
-		assertEquals("Carlos_Vera_user123_pass123_Manager_04-02-2020_true,Manuel_Forbes_we9874_pass987_Trainer_05-20-2019_false,Mabel_Kelley_df6543_pass456_Maintainence_01-02-2015_false,Richard_Cake_hg1245_pass159_Front-Desk_04-20-2020_false,Jawad_Burt_ea8566_pass147_Sanitation_02-06-2077_false,Guy_Fieri_FoodLover_Taco_Guy-That-Eats-Taco_05-11-2020_false,", fremontLoc.employeeFullToString());
+		assertEquals("Carlos_Vera_user123_pass123_Manager_04-02-2020_true,Manuel_Forbes_we9874_pass987_Trainer_05-20-2019_false,Mabel_Kelley_df6543_pass456_Maintainence_01-02-2015_false,Richard_Cake_hg1245_pass159_Front-Desk_04-20-2020_false,Jawad_Burt_ea8566_pass147_Sanitation_02-06-2077_false,Guy_Fieri_FoodLover_Taco_Guy-That-Eats-Taco_05-12-2020_false,", fremontLoc.EmployeeFullToString());
 	}
 	
 	@Test
@@ -89,11 +89,11 @@ public class locationObjectTest {
 		fremontLoc.loadInformation(FremontAbsolute);
 		
 		fremontLoc.removeEquipment("Stationary-Bike");
-		assertEquals("Treadmill_2_Available,Dumbell-Set_3_Under-maintenance,", fremontLoc.getEquiptment());
+		assertEquals("Treadmill_2_Available,Dumbell-Set_3_Under-maintenance,", fremontLoc.getEquipment());
 		fremontLoc.removeEquipment("Treadmill");
-		assertEquals("Dumbell-Set_3_Under-maintenance,", fremontLoc.getEquiptment());
+		assertEquals("Dumbell-Set_3_Under-maintenance,", fremontLoc.getEquipment());
 		fremontLoc.removeEquipment("Dumbell-Set");
-		assertEquals("", fremontLoc.getEquiptment());
+		assertEquals("", fremontLoc.getEquipment());
 		//removed all equipment for testing
 		
 		fremontLoc.removeServices("Pool");
@@ -103,8 +103,8 @@ public class locationObjectTest {
 		fremontLoc.removeServices("BasketBall-Court");
 		assertEquals("", fremontLoc.getServices());
 		
-		fremontLoc.removeEmployeeName("user123");	//removing Carlos Vera, the first employee on the list
-		assertEquals("Manuel_Forbes_we9874_pass987_Trainer_05-20-2019_false,Mabel_Kelley_df6543_pass456_Maintainence_01-02-2015_false,Richard_Cake_hg1245_pass159_Front-Desk_04-20-2020_false,Jawad_Burt_ea8566_pass147_Sanitation_02-06-2077_false,", fremontLoc.employeeFullToString());
+		fremontLoc.removeEmployeeName("user123");	//removing Carlos Vera, the first Employee on the list
+		assertEquals("Manuel_Forbes_we9874_pass987_Trainer_05-20-2019_false,Mabel_Kelley_df6543_pass456_Maintainence_01-02-2015_false,Richard_Cake_hg1245_pass159_Front-Desk_04-20-2020_false,Jawad_Burt_ea8566_pass147_Sanitation_02-06-2077_false,", fremontLoc.EmployeeFullToString());
 		
 		
 		

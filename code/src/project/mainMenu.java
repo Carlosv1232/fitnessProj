@@ -1,5 +1,5 @@
 package project;
-//package project;
+
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -24,16 +24,29 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.event.MenuKeyListener;
+import javax.swing.event.MenuKeyEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.Scanner;
+import project.location;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
+import javax.swing.border.LineBorder;
+import javax.swing.JTextField;
 
 public class mainMenu extends JFrame {
 
 	private JPanel contentPane;
-	private JTable EmTable;
 
 	/**
 	 * Launch the application.
 	 */
-	/*
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -46,144 +59,319 @@ public class mainMenu extends JFrame {
 			}
 		});
 	}
-	*/
-
 	/**
 	 * Create the frame.
 	 */
 	public mainMenu() {
+		setBackground(Color.LIGHT_GRAY);
+	
 		setTitle("Employee Page");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 664, 389);
+		setBounds(100, 100, 509, 279);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		EmTable = new JTable();
-		EmTable.setModel(new DefaultTableModel(
-			new Object[][] {
-				{"First Name", "Last Name", "Username", "Password", "Job", "Location"},
-				{"Jessica", "Johnson", "we12", "hello1", "P.Trainer", "Oakland"},
-				{"James", "Rodriguez", "jr09", "9tyyh", "M.Service Rep", "SF"},
-				{"Lillian", "Anderson", "02wq", "1eisd", "Front Desk", "Fremont"},
-				{"Alex", "Johnes", "ow53", "0dqdj", "Manager", "Fremont"},
-				{"Victoria", "Hernandez", "qw44", "dskt5", "Kids Club Staff", "Oakland"},
-				{"Patrick", "Star", "st33", "eddw9", "P.Trainer", "SF"},
-				{"Sarah ", "Miller", "qe00", "kfjk7", "Staff", "SF"},
-			},
-			new String[] {
-				"First Name", "Last Name", "Username", "Password", "Job", "Location"
-			}
-		));
-		EmTable.setBackground(SystemColor.inactiveCaption);
-		EmTable.setColumnSelectionAllowed(true);
-		EmTable.setCellSelectionEnabled(true);
-		EmTable.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
-		EmTable.setBounds(10, 45, 536, 128);
-		contentPane.add(EmTable);
-		
-		JCheckBox fr = new JCheckBox("Sign-In");
-		fr.setBounds(552, 60, 78, 13);
-		contentPane.add(fr);
-		
-		JPopupMenu popupMenu = new JPopupMenu();
-		addPopup(fr, popupMenu);
-		
-		JCheckBox sc = new JCheckBox("Sign-In");
-		sc.setBounds(552, 93, 78, 13);
-		contentPane.add(sc);
-		
-		JCheckBox tr = new JCheckBox("Sign-In");
-		tr.setBounds(552, 109, 78, 13);
-		contentPane.add(tr);
-		
-		JCheckBox frt = new JCheckBox("Sign-In");
-		frt.setBounds(552, 125, 78, 14);
-		contentPane.add(frt);
-		
-		JCheckBox fv = new JCheckBox("Sign-In");
-		fv.setBounds(552, 142, 78, 14);
-		contentPane.add(fv);
-		
-		JCheckBox sx = new JCheckBox("Sign-In");
-		sx.setBounds(552, 159, 97, 14);
-		contentPane.add(sx);
-		
-		JPopupMenu popupMenu_1 = new JPopupMenu();
-		addPopup(sx, popupMenu_1);
-		
-		JTextPane txtpnPleaseLogIn = new JTextPane();
-		txtpnPleaseLogIn.setText("STAFF ONLY: please enter the location you are currently at to be given more infomation. ");
-		txtpnPleaseLogIn.setBounds(72, 195, 174, 52);
-		contentPane.add(txtpnPleaseLogIn);
-		
-		JButton submitButton = new JButton("Submit");
-		submitButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		submitButton.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				System.out.printf("You have been given the infomation, please start working", submitButton);
-			}
-		});
-		submitButton.setBounds(101, 316, 89, 23);
-		contentPane.add(submitButton);
-		
 		JButton logOut = new JButton("Log-out?\r\n");
+		logOut.setBackground(Color.WHITE);
 		logOut.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				LogOut lg = new LogOut();
 				lg.setVisible(true);
 			}
 		});
-		logOut.setBounds(504, 316, 89, 23);
+		logOut.setBounds(304, 99, 120, 32);
 		contentPane.add(logOut);
 		
-		JCheckBox chckbxNewCheckBox = new JCheckBox("Sign-In");
-		chckbxNewCheckBox.setBounds(552, 76, 78, 14);
-		contentPane.add(chckbxNewCheckBox);
+		JButton eqB = new JButton("Check Equipment\r\n");
+		eqB.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Scanner input = new Scanner(System.in);
+				String equipName;
+				System.out.println("Please write in which location: ");
+				equipName = input.nextLine();
+				if(equipName.equals("Fremont")) {
+					
+				
+				location fLoc = new location();
+				File file = new File("FremontLocation.txt");
+				String FremontAb = file.getAbsolutePath();
+				fLoc.loadInformation(FremontAb);
+				
+				fLoc.getEquipment();
+				String unSplit = fLoc.getEquipment();
+				String[] arr = unSplit.split(",");
+				for(int  i = 0; i < arr.length; i++) {
+					String[] data = arr[i].split("_");
+					System.out.println(data[0]);
+					System.out.println(data[1]);
+					System.out.println(data[2]);
+				
+				}
+			}
+				else if(equipName.equals("SF")){
+				
+				location sFLoc = new location();
+				File sfFile = new File("sanFranLocation.txt");
+				String SFAb = sfFile.getAbsolutePath();
+				sFLoc.loadInformation(SFAb);
+				sFLoc.getEquipment();
+				String unSplit = sFLoc.getEquipment();
+				String[] arr1= unSplit.split(",");
+				for(int  i = 0; i < arr1.length; i++) {
+					String[] data = arr1[i].split("_");
+					System.out.println(data[0]);
+					System.out.println(data[1]);
+					System.out.println(data[2]);
+				}
+			
+		}
+				else if(equipName.equals("Oakland")) {
+					
+				
+				location OakLoc = new location();
+				File OakFile = new File("OaklandLocation.txt");
+				String oakAb = OakFile.getAbsolutePath();
+				OakLoc.loadInformation(oakAb);
+			
+				OakLoc.getEquipment();
+			
+				String unSplit2 = OakLoc.getEquipment();
+				
+				String[] arr2 = unSplit2.split(",");
+				for(int  i = 0; i < arr2.length; i++) {
+					String[] data = arr2[i].split("_");
+					System.out.println(data[0]);
+					System.out.println(data[1]);
+					System.out.println(data[2]);
+				}
+				}
+			}
+	
+			
+		});
+		eqB.setBackground(Color.GRAY);
+		eqB.setBounds(26, 36, 145, 32);
+		contentPane.add(eqB);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"SF", "Fremont", "Oakland"}));
-		comboBox.setBounds(10, 269, 111, 36);
-		contentPane.add(comboBox);
-		
-		JTextPane txtpnPleaseSigninPtrainers = new JTextPane();
-		txtpnPleaseSigninPtrainers.setText("Please sign-in\r\nP.TRAINERS ONLY: sign-in and you will be given infomation about your appointment. ");
-		txtpnPleaseSigninPtrainers.setBounds(72, 11, 416, 36);
-		contentPane.add(txtpnPleaseSigninPtrainers);
-		
-		JLabel lblNewLabel = new JLabel("2.");
-		lblNewLabel.setBounds(46, 194, 16, 14);
+		JLabel lblNewLabel = new JLabel("Welcome Back User!");
+		lblNewLabel.setForeground(Color.DARK_GRAY);
+		lblNewLabel.setBounds(169, 11, 145, 14);
 		contentPane.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("1.");
-		lblNewLabel_1.setBounds(46, 11, 16, 14);
-		contentPane.add(lblNewLabel_1);
-		
-		JTextPane txtpnThisWillGenerate = new JTextPane();
-		txtpnThisWillGenerate.setText("This will generate the equipment that are reseverved or in need of mateninace");
-		txtpnThisWillGenerate.setBounds(362, 195, 126, 110);
-		contentPane.add(txtpnThisWillGenerate);
-	}
-	private static void addPopup(Component component, final JPopupMenu popup) {
-		component.addMouseListener(new MouseAdapter() {
+		JButton btnNewButton = new JButton("Add New Equipment");
+		btnNewButton.setBackground(Color.WHITE);
+		btnNewButton.setForeground(Color.BLACK);
+		btnNewButton.addMouseListener(new MouseAdapter() {
+			@Override
 			public void mousePressed(MouseEvent e) {
-				if (e.isPopupTrigger()) {
-					showMenu(e);
+				Scanner input = new Scanner(System.in);
+				String equipName;
+				System.out.println("Please write in which location: ");
+				equipName = input.nextLine();
+				
+				if(equipName.equals("Fremont")){
+					location fremontLoc = new location();
+					File file = new File("fremontLocation.txt");
+					//File file = new File("FremontLocation.txt");
+					String FremontAbsolute = file.getAbsolutePath();
+					fremontLoc.loadInformation(FremontAbsolute);	
+					String name;
+					int code;
+					String av;
+					System.out.println("Please enter the equipment you wish to add ");
+					name = input.nextLine();
+					//input.nextLine();
+					System.out.println("Code: ");
+					code = input.nextInt(); 
+					
+					input.nextLine();
+					
+					System.out.println("Availbilty:");
+					av = input.nextLine();
+					
+				
+					System.out.println("Name: " + name);
+					System.out.println("Code: " + code);
+					System.out.println("Availbilty: " + av);
+			
+				
+					fremontLoc.addEquipment(name, code, av);
+					try {
+						fremontLoc.saveinformation(FremontAbsolute);
+					} catch (IOException e1) {
+				
+						e1.printStackTrace();
+					}
+					
+					
 				}
-			}
-			public void mouseReleased(MouseEvent e) {
-				if (e.isPopupTrigger()) {
-					showMenu(e);
+				else if(equipName.equals("SF")) {
+					location sanFranLoc = new location();
+					File sfFile = new File("sanFranLocation.txt");
+					//File sfFile = new File("SanFranLocation.txt");
+					String SFAbsolute = sfFile.getAbsolutePath();
+					sanFranLoc.loadInformation(SFAbsolute);
+					String name;
+					int code;
+					String av;
+					System.out.println("Please enter the equipment you wish to add ");
+					name = input.nextLine();
+					//input.nextLine();
+					System.out.println("Code: ");
+					code = input.nextInt(); 
+					
+					input.nextLine();
+					
+					System.out.println("Availbilty:");
+					av = input.nextLine();
+					
+				
+					System.out.println("Name: " + name);
+					System.out.println("Code: " + code);
+					System.out.println("Availbilty: " + av);
+			
+				
+					sanFranLoc.addEquipment(name, code, av);
+					try {
+						sanFranLoc.saveinformation(SFAbsolute);
+					} catch (IOException e1) {
+				
+						e1.printStackTrace();
+					}
+					
+					
+
+					
 				}
-			}
-			private void showMenu(MouseEvent e) {
-				popup.show(e.getComponent(), e.getX(), e.getY());
+				else if(equipName.equals("Oakland")) {
+					location OaklandLoc = new location();
+					File OakFile = new File("OaklandLocation.txt");
+					String oakAbsolute = OakFile.getAbsolutePath();
+					OaklandLoc.loadInformation(oakAbsolute);
+					String name;
+					int code;
+					String av;
+					System.out.println("Please enter the equipment you wish to add ");
+					name = input.nextLine();
+					//input.nextLine();
+					System.out.println("Code: ");
+					code = input.nextInt(); 
+					
+					input.nextLine();
+					
+					System.out.println("Availbilty:");
+					av = input.nextLine();
+					
+				
+					System.out.println("Name: " + name);
+					System.out.println("Code: " + code);
+					System.out.println("Availbilty: " + av);
+			
+				
+					OaklandLoc.addEquipment(name, code, av);
+					try {
+						OaklandLoc.saveinformation(oakAbsolute);
+					} catch (IOException e1) {
+				
+						e1.printStackTrace();
+					}
+					
+				}
 			}
 		});
+	
+		btnNewButton.setBounds(294, 36, 153, 32);
+		contentPane.add(btnNewButton);
+		
+		JButton btnNewButton_1 = new JButton("Remove Equipment");
+		btnNewButton_1.setBackground(Color.WHITE);
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		btnNewButton_1.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Scanner input = new Scanner(System.in);
+				String equipName;
+				System.out.println("Please write in which location: ");
+				equipName = input.nextLine();
+				
+				if(equipName.equals("Fremont")){
+					location fremontLoc = new location();
+					File file = new File("fremontLocation.txt");
+					//File file = new File("FremontLocation.txt");
+					String FremontAbsolute = file.getAbsolutePath();
+					fremontLoc.loadInformation(FremontAbsolute);	
+					System.out.println("Please enter the equipment you wish to remove ");
+					String Name = input.nextLine();
+					
+				
+					System.out.println("Name: " + Name);
+				
+			
+				
+					fremontLoc.removeEquipment(Name);
+					try {
+						fremontLoc.saveinformation(FremontAbsolute);
+					} catch (IOException e1) {
+				
+						e1.printStackTrace();
+					}
+					
+				}
+				else if(equipName.equals("SF")) {
+					location sanFranLoc = new location();
+					File sfFile = new File("sanFranLocation.txt");
+					//File sfFile = new File("SanFranLocation.txt");
+					String SFAbsolute = sfFile.getAbsolutePath();
+					sanFranLoc.loadInformation(SFAbsolute);
+					System.out.println("Please enter the equipment you wish to remove ");
+					String Name = input.nextLine();
+					
+				
+					System.out.println("Name: " + Name);
+				
+			
+				
+					sanFranLoc.removeEquipment(Name);
+					try {
+						sanFranLoc.saveinformation(SFAbsolute);
+					} catch (IOException e1) {
+				
+						e1.printStackTrace();
+					}
+				}
+				else if(equipName.equals("Oakland")) {
+					location OaklandLoc = new location();
+					File OakFile = new File("OaklandLocation.txt");
+					String oakAbsolute = OakFile.getAbsolutePath();
+					OaklandLoc.loadInformation(oakAbsolute);
+					System.out.println("Please enter the equipment you wish to remove ");
+					String Name = input.nextLine();
+					
+				
+					System.out.println("Name: " + Name);
+				
+			
+				
+					OaklandLoc.removeEquipment(Name);
+					try {
+						OaklandLoc.saveinformation(oakAbsolute);
+					} catch (IOException e1) {
+				
+						e1.printStackTrace();
+					}
+				}
+			}
+		});
+		btnNewButton_1.setBounds(26, 99, 145, 30);
+		contentPane.add(btnNewButton_1);
+	}		
+	private static void addPopup(Component component, final JPopupMenu popup) {
 	}
 }

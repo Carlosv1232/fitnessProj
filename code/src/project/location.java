@@ -18,13 +18,13 @@ public class location {
 	int numOfServices;
 	int servicesLimit = 10;
 	
-	employee[] loc_emp;	//array to hold the location employees
-	int numOfEmp;	//number of employees at the location
-	int emplLimit = 15;	//each location will be limited by 10 employees including the manager
+	Employee[] loc_emp;	//array to hold the location Employees
+	int numOfEmp;	//number of Employees at the location
+	int emplLimit = 15;	//each location will be limited by 10 Employees including the manager
 		
-	equipment[] equip;	//holds all the equipment that the location has
-	int numOfEquip;	//holds the number of equipment
-	int equipmentLimit = 15;	//set to 10 for testing purposes, real applications will have larger
+	Equipment[] equip;	//holds all the Equipment that the location has
+	int numOfEquip;	//holds the number of Equipment
+	int EquipmentLimit = 15;	//set to 10 for testing purposes, real applications will have larger
 	
 	String isBusy;	//this will store whether the location is busy or not, { slow, medium, High }
 					//will be generated every time the class is built
@@ -38,8 +38,8 @@ public class location {
 		numOfServices = 0;
 		numOfEmp = 0;
 		numOfEquip = 0;
-		equip = new equipment[equipmentLimit];
-		loc_emp = new employee[emplLimit];
+		equip = new Equipment[EquipmentLimit];
+		loc_emp = new Employee[emplLimit];
 		Services = new String[servicesLimit];
 		int ranNum = ThreadLocalRandom.current().nextInt(1, 4);	//will generate a number between 1 - 3
 		if(ranNum == 1) {
@@ -51,14 +51,14 @@ public class location {
 		}
 	}
 	
-	public location(String loc, String serv[], employee emp[], equipment eq[],String loc_man) {
+	public location(String loc, String serv[], Employee emp[], Equipment eq[],String loc_man) {
 		
 		String[] Services = new String[servicesLimit];
 
-		employee[] loc_emp = new employee[emplLimit];
-		equipment[] equip = new equipment[equipmentLimit];
+		Employee[] loc_emp = new Employee[emplLimit];
+		Equipment[] equip = new Equipment[EquipmentLimit];
 
-		loc_emp = new employee[emplLimit];
+		loc_emp = new Employee[emplLimit];
 
 		
 		location = loc;
@@ -71,7 +71,7 @@ public class location {
 			numOfServices++;
 		}
 		
-		//for loop to store location employees
+		//for loop to store location Employees
 		for(int i = 0; i < emp.length; i++) {
 			
 			loc_emp[i] = emp[i];
@@ -125,7 +125,7 @@ public class location {
 	public String getEmployees() {
 		//getEmployees is going to work like toString(), must be split on other end
 		//First name and Last name will be connected with "_", must be split on other end
-		//This function will only return the names of the employees
+		//This function will only return the names of the Employees
 		//WILL ONLY RETURN THE FIRST, LAST, AND ID
 		String result = "";
 		for(int i = 0; i < numOfEmp; i++) {
@@ -146,13 +146,27 @@ public class location {
 		 }
 		 
 		 
-		 //in Case it doesn't find the employee
+		 //in Case it doesn't find the Employee
 		 System.out.println("Employee Not Found");
-		 result = "No employee under that name";
+		 result = "No Employee under that name";
 		 return result;		
 	}
 	
-	public String employeeToString() {	
+	public Boolean EmployeeLogin(String user, String pass) {
+		
+		for(int i = 0; i < loc_emp.length; i++) {
+			 if(loc_emp[i].getUser().equals(user)) {	//loc_emp[i].getFName() == Fname
+				 if(loc_emp[i].checkSignIn(user, pass)) {
+					 return true;
+				 };
+			 }
+		 }
+		
+		return false;
+		
+	}
+	
+	public String EmployeeToString() {	
 		
 		String result = "";
 		for(int i = 0; i < numOfEmp; i++) {
@@ -160,10 +174,10 @@ public class location {
 		}
 		return result;
 		//return: FirstName_LastName_ID_isHired_isManager, FirstName_LastName_ID_isHired_isManager
-		//therefore split with "," first to get individual employees, then split "_" to get the individual information
+		//therefore split with "," first to get individual Employees, then split "_" to get the individual information
 	}
 	
-	public String employeeFullToString() {	//this will be used to store the data back to the text file
+	public String EmployeeFullToString() {	//this will be used to store the data back to the text file
 		String result = "";
 		for(int i = 0; i < numOfEmp; i++) {
 			result = result + loc_emp[i].fullToString() + ",";
@@ -172,7 +186,7 @@ public class location {
 	}
 	
 	//public void addEmployee(String Fname, String Lname, String username, String pass)
-	public void addEmployee(employee data) {	//this function will only be accessible with a manager
+	public void addEmployee(Employee data) {	//this function will only be accessible with a manager
 		//when the function is called, we will pass in the users information to validate that they're a manager
 		/*
 		if(user.returnManager() == false) {	//if the user is not an manager, then they will be returned to the menu
@@ -181,31 +195,31 @@ public class location {
 		}
 		*/
 		
-		if(emplLimit == numOfEmp) {	//checks limit of employees for the location
+		if(emplLimit == numOfEmp) {	//checks limit of Employees for the location
 			System.out.println("Maximum limit has been reached!");
 			return;
 		}
 		
 		
-		loc_emp[numOfEmp] = data;	//employee is set to the end of the list
-		numOfEmp++;	//increment number of employees at the location
+		loc_emp[numOfEmp] = data;	//Employee is set to the end of the list
+		numOfEmp++;	//increment number of Employees at the location
 		
 		return;
 		
 	}
 	
-	public void removeEmployeeName(String user) {	//function will need to take the User name of the employee in order to avoid people with same first and last names
+	public void removeEmployeeName(String user) {	//function will need to take the User name of the Employee in order to avoid people with same first and last names
 		if(numOfEmp == 0) {
-			System.out.println("There are no employees to remove");
+			System.out.println("There are no Employees to remove");
 			return;
 		}
-		if(loc_emp[numOfEmp - 1].getUser().equals(user)) {	//checks if the employee is the last one in the list
+		if(loc_emp[numOfEmp - 1].getUser().equals(user)) {	//checks if the Employee is the last one in the list
 			numOfEmp--;
 			return;
 		}
 		//System.out.println("Inside the function: " + numOfEmp);
 		
-		for(int i = 0; i < numOfEmp - 1; i++) {	//iterate through the list to find the employee
+		for(int i = 0; i < numOfEmp - 1; i++) {	//iterate through the list to find the Employee
 			//System.out.println(loc_emp.toString());
 			if(loc_emp[i].getUser().equals(user)) {
 				for(int j = i; j < numOfEmp - 1; j++) {
@@ -217,14 +231,14 @@ public class location {
 		
 		
 		if(numOfEmp == 0) {
-			System.out.println("This Location no longer has employees");
+			System.out.println("This Location no longer has Employees");
 		}
 		return;
 		
 	}
 	
 	public void addServices(String service) {	
-	//services and equipment are different things in this case
+	//services and Equipment are different things in this case
 	//services could apply to swimming pool, sauna, basketball court, personal training
 		if(servicesLimit == numOfServices) {	//checks the limit of services
 			System.out.println("The limit of services has been reached");
@@ -272,7 +286,7 @@ public class location {
 		
 	}
 	
-	public void assignManager(String user) {	//we will use the id to find the employee to assign manager
+	public void assignManager(String user) {	//we will use the id to find the Employee to assign manager
 		for(int i = 0; i < numOfEmp - 1; i++) {
 			if(loc_emp[i].getUser().equals(user)) {
 				loc_emp[i].changeManager(true);
@@ -281,11 +295,11 @@ public class location {
 			}
 		}
 		
-		System.out.println("Could not find employee");
+		System.out.println("Could not find Employee");
 		return;
 	}
 	
-	public int getNumOfEmp() {	//returns the number of employees
+	public int getNumOfEmp() {	//returns the number of Employees
 		return numOfEmp;
 	}
 	
@@ -297,27 +311,27 @@ public class location {
 		return numOfEquip;
 	}
 	
-	public void addEquipment(String name, int code, String status) {	//the user will have to enter in the equipment information
+	public void addEquipment(String name, int code, String status) {	//the user will have to enter in the Equipment information
 	//we will check if user is manager within the GUI
-		if(numOfEquip == equipmentLimit) {
-			System.out.println("The limit for equipment has been reached");
+		if(numOfEquip == EquipmentLimit) {
+			System.out.println("The limit for Equipment has been reached");
 			return;
 		}
 		System.out.println("Number of Equip: " + numOfEquip);
-		equipment newEquip = new equipment(name, code, status);
+		Equipment newEquip = new Equipment(name, code, status);
 		System.out.println(newEquip.toString());
 		equip[numOfEquip] = newEquip;
 		numOfEquip++;
-		System.out.println(name + " was added to the equipment");
+		System.out.println(name + " was added to the Equipment");
 		return;
 	}
 	
 	public void removeEquipment(String name) {
 		if(numOfEquip == 0) {
-			System.out.println("There are no equipment to remove");
+			System.out.println("There are no Equipment to remove");
 			return;
 		}
-		if(equip[numOfEquip - 1].getName().equals(name)) {	//checks if the equipment is the last one in the list
+		if(equip[numOfEquip - 1].getName().equals(name)) {	//checks if the Equipment is the last one in the list
 			numOfEquip--;
 			return;
 		}
@@ -332,7 +346,7 @@ public class location {
 		}
 		
 		if(numOfEquip == 0) {
-			System.out.println("This Location no longer has equipment");
+			System.out.println("This Location no longer has Equipment");
 		}
 		return;
 	}
@@ -351,7 +365,7 @@ public class location {
 		return result;
 	}
 	
-	public String getEquiptment() {	//this function will work like a toString() function, use .split(",")
+	public String getEquipment() {	//this function will work like a toString() function, use .split(",")
 		String result = "";
 		
 		for(int i = 0; i < numOfEquip; i++) {
@@ -361,7 +375,7 @@ public class location {
 		return result;
 	}
 	
-	public String getLocationinfo() {	//returns: Location name, Location manager, IsBusy, equipment toString(), service toString()
+	public String getLocationinfo() {	//returns: Location name, Location manager, IsBusy, Equipment toString(), service toString()
 		String result = "";
 		result = location + "," + location_manager + ",";
 		for(int i = 0; i < numOfServices; i++) {
@@ -442,7 +456,7 @@ public class location {
 						System.out.println("Total Number of Services added: " + numOfServices);
 						count++;
 						break;
-					case 3:	//loading in the equipment
+					case 3:	//loading in the Equipment
 						System.out.println(partition);
 						System.out.println("Case: " + count + ", Loading in the Equipment");
 						System.out.println(line);
@@ -450,17 +464,17 @@ public class location {
 						String[] unSplitEqui = unSplit.split(",");
 						for(int i = 0; i < unSplitEqui.length; i++) {
 							String[] split = unSplitEqui[i].split("_");
-							//equipment only has three properties, so 3 elements
+							//Equipment only has three properties, so 3 elements
 							int code = Integer.parseInt(split[1]);
 							//System.out.println(Integer.parseInt(split[1]));
 							//System.out.println(code);
 							addEquipment(split[0], code, split[2]);	//split[1] is String, we convert to int for code
 						}
-						System.out.println(getEquiptment());
+						System.out.println(getEquipment());
 						System.out.println("Total Number of Equipment added: " + numOfEquip);
 						count++;
 						break;
-					case 4:	//loading in the employees
+					case 4:	//loading in the Employees
 						System.out.println(partition);
 						System.out.println("Case: " + count + ", Loading in the Location Employees");
 						
@@ -469,11 +483,11 @@ public class location {
 						for(int i = 0; i < unSplitEmp.length; i++) {	
 							String[] split = unSplitEmp[i].split("_");
 							System.out.println(split.length);
-							employee temp = new employee(split[0], split[1], split[2], split[3], split[4], split[5], Boolean.parseBoolean(split[6]));
+							Employee temp = new Employee(split[0], split[1], split[2], split[3], split[4], split[5], Boolean.parseBoolean(split[6]));
 							System.out.println(split[0] + " " + split[1] + " " + split[2] + " " + split[3] + " " + split[4] + " " + split[5] + " " + Boolean.parseBoolean(split[6]));
 							addEmployee(temp);
 						}
-						//System.out.println(employeeToString());
+						//System.out.println(EmployeeToString());
 						System.out.println("Total Number of Employees added: " + numOfEmp);
 						count++;
 						break;
@@ -551,7 +565,7 @@ public class location {
 			System.out.println(partition);
 			System.out.println("Storing the Employee information");
 			System.out.println("Number of Employees: " + numOfEmp);
-			bw.write(employeeFullToString());
+			bw.write(EmployeeFullToString());
 			
 			bw.close();
 		} catch (FileNotFoundException e1) {
@@ -569,13 +583,13 @@ public class location {
 	int numOfServices;
 	int servicesLimit = 5;
 	
-	employee[] loc_emp;	//array to hold the location employees
-	int numOfEmp;	//number of employees at the location
-	int emplLimit = 10;	//each location will be limited by 10 employees including the manager
+	Employee[] loc_emp;	//array to hold the location Employees
+	int numOfEmp;	//number of Employees at the location
+	int emplLimit = 10;	//each location will be limited by 10 Employees including the manager
 		
-	equipment[] equip;	//holds all the equipment that the location has
-	int numOfEquip;	//holds the number of equipment
-	int equipmentLimit = 10;	//set to 10 for testing purposes, real applications will have larger
+	Equipment[] equip;	//holds all the Equipment that the location has
+	int numOfEquip;	//holds the number of Equipment
+	int EquipmentLimit = 10;	//set to 10 for testing purposes, real applications will have larger
 	
 	String isBusy;	//this will store whether the location is busy or not, { slow, medium, High }
 					//will be generated every time the class is built

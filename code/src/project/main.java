@@ -1,6 +1,5 @@
 package project;
 
-
 import java.util.*;
 import java.io.File;
 import java.io.BufferedReader;
@@ -8,65 +7,68 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.awt.EventQueue;
 import java.io.*;
+public class Main{
+public static void main(String arg[]) throws IOException {
 
-public class main {
-	
-	
-	public static void main(String arg[]) throws IOException {
-		
-		//in the main file we will store which user is signed in into their own variable that will
-		//be passed into other functions
-		//customer current_user = new customer();	we will get this information after sign-in
-		
 		/////////////////////////////////////////////////////////////////////////
 		//this will be loading in all the information for all of the locations//
-		
+
 		location fremontLoc = new location();
-		File file = new File("FremontLocation.txt");
+		File file = new File("fremontLocation.txt");
+		//File file = new File("FremontLocation.txt");
 		String FremontAbsolute = file.getAbsolutePath();
 		fremontLoc.loadInformation(FremontAbsolute);
-		
+
 		location sanFranLoc = new location();
-		File sfFile = new File("SanFranLocation.txt");
+		File sfFile = new File("sanFranLocation.txt");
+		//File sfFile = new File("SanFranLocation.txt");
 		String SFAbsolute = sfFile.getAbsolutePath();
 		sanFranLoc.loadInformation(SFAbsolute);
-		
+
 		location OaklandLoc = new location();
 		File OakFile = new File("OaklandLocation.txt");
 		String oakAbsolute = OakFile.getAbsolutePath();
 		OaklandLoc.loadInformation(oakAbsolute);
-		
+
 		/////////////////////////////////////////////////////////////////////////
-		
+
 		//				GUI SHOULD START FROM HERE, CALL GUI MAIN			   //
-		
+
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					Gui window = new Gui();
-					
+
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
-		
+
 		/////////////////////////////////////////////////////////////////////////
-		
-		
-		
+		File testFile = new File("saveTest.txt");
+		String testAbso = testFile.getAbsolutePath();
+
+		sanFranLoc.saveinformation(testAbso);
+
+
 		/*	Testing .saveInformation()
 		File testFile = new File("saveTest.txt");
 		String testAbso = testFile.getAbsolutePath();
 		*/
-		
+
 		//The Save information function should be called when the program is exited//
 		fremontLoc.saveinformation(FremontAbsolute);
 		sanFranLoc.saveinformation(SFAbsolute);
 		OaklandLoc.saveinformation(oakAbsolute);
-		
+
 		}
-}
+
+		
+		
+		
+		
+
 		
 		
 		/*
@@ -104,13 +106,12 @@ public class main {
 		employee[] arr1 = {emp1, emp2, emp3};	//we will 
 		
 		
-		equipment eq1 = new equipment("Stationary Bike", 1, "Available");
-		equipment eq2 = new equipment("Treadmill", 2, "Available");
-		equipment eq3 = new equipment("Dumbell Set", 3, "Under Maintainance");
-		equipment[] arr2 = {eq1, eq2, eq3};
+		equiptment eq1 = new equiptment("Stationary Bike", 1, "Available");
+		equiptment eq2 = new equiptment("Treadmill", 2, "Available");
+		equiptment eq3 = new equiptment("Dumbell Set", 3, "Under Maintainance");
+		equiptment[] arr2 = {eq1, eq2, eq3};
 		
 		String locManager = "Carlos";
-
 		location Fremont = new location(locationName, serv, arr1, arr2, locManager);
 		//System.out.println(Fremont.toString());
 		
@@ -154,11 +155,8 @@ public class main {
 		
 		System.out.println(Fremont.getEmployees());	//testing getEmployees() methods
 		System.out.println(Fremont.getNumOfEquip());
-		System.out.println(Fremont.getEquipment());
+		System.out.println(Fremont.getEquiptment());
 		System.out.println(Fremont.getLocationinfo());
-	*/
-	
+		*/
 
-
-
-	
+	}

@@ -1,5 +1,4 @@
 package project;
-//package project;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -65,8 +64,9 @@ public class NewMember extends JFrame {
 		setAlwaysOnTop(true);
 	
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 643, 368);
+		setBounds(100, 100, 574, 297);
 		contentPane = new JPanel();
+		contentPane.setBackground(Color.LIGHT_GRAY);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
@@ -76,73 +76,73 @@ public class NewMember extends JFrame {
 		contentPane.add(firstName);
 		
 		JLabel lastName = new JLabel("Last Name");
-		lastName.setBounds(295, 11, 64, 14);
+		lastName.setBounds(236, 11, 64, 14);
 		contentPane.add(lastName);
 		
 		JLabel addrs = new JLabel("Address");
-		addrs.setBounds(10, 59, 64, 14);
+		addrs.setBounds(10, 36, 64, 14);
 		contentPane.add(addrs);
 		
 		JLabel city = new JLabel("City");
-		city.setBounds(284, 59, 30, 14);
+		city.setBounds(270, 39, 30, 14);
 		contentPane.add(city);
 		
 		JLabel zipCode = new JLabel("Zip-Code");
-		zipCode.setBounds(464, 59, 56, 14);
+		zipCode.setBounds(430, 39, 56, 14);
 		contentPane.add(zipCode);
 		
 		JLabel phoneNumbr = new JLabel("Phone Number");
-		phoneNumbr.setBounds(10, 127, 88, 14);
+		phoneNumbr.setBounds(10, 78, 88, 14);
 		contentPane.add(phoneNumbr);
 		
 		JLabel email = new JLabel("Email");
-		email.setBounds(270, 127, 57, 14);
+		email.setBounds(270, 78, 57, 14);
 		contentPane.add(email);
 		
 		JRadioButton gmail = new JRadioButton("@gmail.com");
-		gmail.setBounds(236, 148, 100, 20);
+		gmail.setBounds(247, 99, 90, 14);
 		contentPane.add(gmail);
 		
 		JRadioButton yahoo = new JRadioButton("@yahoo.com");
-		yahoo.setBounds(338, 148, 90, 20);
+		yahoo.setBounds(346, 99, 100, 14);
 		contentPane.add(yahoo);
 		
 		JRadioButton outlook = new JRadioButton("@outlook.com");
-		outlook.setBounds(430, 148, 108, 20);
+		outlook.setBounds(455, 99, 100, 14);
 		contentPane.add(outlook);
 		
 		em = new JTextField();
-		em.setBounds(337, 124, 201, 20);
+		em.setBounds(323, 75, 175, 20);
 		contentPane.add(em);
 		em.setColumns(10);
 		
 		pn = new JTextField();
-		pn.setBounds(108, 124, 128, 20);
+		pn.setBounds(108, 75, 128, 20);
 		contentPane.add(pn);
 		pn.setColumns(10);
 		
 		fn = new JTextField();
-		fn.setBounds(81, 8, 180, 20);
+		fn.setBounds(81, 8, 146, 20);
 		contentPane.add(fn);
 		fn.setColumns(10);
 		
 		nl = new JTextField();
-		nl.setBounds(367, 8, 153, 20);
+		nl.setBounds(298, 8, 128, 20);
 		contentPane.add(nl);
 		nl.setColumns(10);
 		
 		addr = new JTextField();
-		addr.setBounds(82, 56, 179, 20);
+		addr.setBounds(84, 36, 146, 20);
 		contentPane.add(addr);
 		addr.setColumns(10);
 		
 		cty = new JTextField();
-		cty.setBounds(324, 56, 119, 20);
+		cty.setBounds(298, 36, 119, 20);
 		contentPane.add(cty);
 		cty.setColumns(10);
 		
 		zip = new JTextField();
-		zip.setBounds(530, 56, 70, 20);
+		zip.setBounds(483, 36, 70, 20);
 		contentPane.add(zip);
 		zip.setColumns(10);
 		
@@ -151,37 +151,37 @@ public class NewMember extends JFrame {
 		contentPane.add(horizontalStrut);
 		
 		JLabel username = new JLabel("Username");
-		username.setBounds(10, 207, 64, 14);
+		username.setBounds(10, 125, 64, 14);
 		contentPane.add(username);
 		
 		JLabel retyusr = new JLabel("Re-type Username");
-		retyusr.setBounds(257, 207, 115, 14);
+		retyusr.setBounds(257, 125, 115, 14);
 		contentPane.add(retyusr);
 		
 		JLabel password = new JLabel("Password");
-		password.setBounds(10, 248, 64, 14);
+		password.setBounds(10, 162, 64, 14);
 		contentPane.add(password);
 		
 		JLabel retypssw = new JLabel("Re-type Password");
-		retypssw.setBounds(257, 248, 115, 14);
+		retypssw.setBounds(247, 162, 115, 14);
 		contentPane.add(retypssw);
 		
 		usrr = new JTextField();
-		usrr.setBounds(81, 200, 146, 20);
+		usrr.setBounds(90, 122, 146, 20);
 		contentPane.add(usrr);
 		usrr.setColumns(10);
 		
 		retypsswrd = new JPasswordField();
-		retypsswrd.setBounds(384, 245, 154, 20);
+		retypsswrd.setBounds(372, 159, 154, 20);
 		contentPane.add(retypsswrd);
 		
 		retyusrr = new JTextField();
-		retyusrr.setBounds(382, 207, 154, 20);
+		retyusrr.setBounds(369, 125, 154, 20);
 		contentPane.add(retyusrr);
 		retyusrr.setColumns(10);
 		
 		psswrd = new JPasswordField();
-		psswrd.setBounds(80, 245, 147, 20);
+		psswrd.setBounds(89, 159, 147, 20);
 		contentPane.add(psswrd);
 		
 		JButton enter = new JButton("Submit");
@@ -194,11 +194,11 @@ public class NewMember extends JFrame {
 		enter.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				System.out.printf("info added", enter);
+				System.out.printf("info added\n", enter);
 				System.out.print("your info has been added, welcome new Member!" );
 			}
 		});
-		enter.setBounds(214, 276, 89, 23);
+		enter.setBounds(236, 207, 89, 23);
 		contentPane.add(enter);
 	}
 }
